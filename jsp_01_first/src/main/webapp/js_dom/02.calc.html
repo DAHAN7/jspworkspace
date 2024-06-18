@@ -17,22 +17,13 @@
 	second tag요소의 value값을 더한 결과를
 	result 태그요소의 value에 출력
 	*/
-		function calculate() {
-			
-			// first와 second 입력 요소의 값을 가져옵니다.
-			let firstValue = document.getElementById('first').value;
-			let secondValue = document.getElementById('second').value;
-			
-			// 숫자로 변환합니다.
-			let num1 = parseFloat(firstValue);
-			let num2 = parseFloat(secondValue);
-			
-			// 결과를 계산합니다.
-			let sum = num1 + num2;
-			
-			// result 입력 요소에 결과를 출력합니다.
-			document.getElementById('result').value = sum;
-		}
+	function calculate(){
+		
+		let firstValue = document.getElementById('first').value;
+		let secondValue = document.getElementById('second').value;
+		
+		document.getElementById('result').value = parseInt(firstValue) + new Number(secondValue);
+	}
 	</script>
 </body>
 </html>
