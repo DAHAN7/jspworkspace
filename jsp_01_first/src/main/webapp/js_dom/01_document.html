@@ -17,7 +17,7 @@
 	<input type="text" id="selectedId" class="tagClass" value="3" tabindex="4"/> <br/>
 	<input type="text" id="selectedId" class="tagClass" value="4" tabindex="3"/> <br/>
 	<input type="text" id="selectedId" class="tagClass" value="5" tabindex="5"/> <br/>
-	<input type="button" id="selectedId" class="tagClass" value="button"/> <br/>
+	<input onclick="alert('김동화 ...');" type="button" id="selectedId" class="tagClass" value="button"/> <br/>
 
 	<!-- 브라우저에 의해서 읽혀진 태그요소만 document 문서객체에 등록 -->
 	<script>
@@ -49,15 +49,41 @@
 		console.log(tagArray);
 		for(let i = 0; i < tagArray.length; i++){
 			document.write(`${i}번째 태그요소 : ${tagArray[i].value} <br/>`);
-		}		
-		// class 이름으로 선택된 모든 태그요소를 배열 형식으로 반환
+		}
+		
+		// class 이름으로 선택된 모든 태그 요소를 배열 형식으로 반환
 		let classArray = document.getElementsByClassName("tagClass");
 		console.log(classArray);
 		
-		// css 선택자로 검색된 모든 요소를 배열로 반환
+		// css 선택자로 검색된 모든 태그 요소를 배열로 반환
 		let selectAll = document.querySelectorAll("input[type='text']");
 		console.log(selectAll);
 		
+		let tag = document.getElementById("selectedId");
+		
+		// 함수를 => 화살표로 표시
+		// arrow function
+		tag.onclick = ()=>{
+			alert(this.value+"");
+		};
 	</script>
+	<hr/>
+	<a href="02_calc.html">02_calc.html</a>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
