@@ -43,6 +43,21 @@
 		
 		document.write(`querySelector : ${selector.value} <br/>`);
 		
+		// 다중 요소 반환
+		// 태그 이름으로 선택된 모든 태그 요소를 배열 형식으로 반환
+		let tagArray = document.getElementsByTagName("input");
+		console.log(tagArray);
+		for(let i = 0; i < tagArray.length; i++){
+			document.write(`${i}번째 태그요소 : ${tagArray[i].value} <br/>`);
+		}		
+		// class 이름으로 선택된 모든 태그요소를 배열 형식으로 반환
+		let classArray = document.getElementsByClassName("tagClass");
+		console.log(classArray);
+		
+		// css 선택자로 검색된 모든 요소를 배열로 반환
+		let selectAll = document.querySelectorAll("input[type='text']");
+		console.log(selectAll);
+		
 	</script>
 </body>
 </html>
