@@ -28,16 +28,24 @@
 	<button onclick="removeLast();">마지막 요소 삭제</button>
 	<br/>
 	<div id="target">
-		<p id="p1" class="p1 pClass">1번째 단락</p>
-		<p id="p2" class="p1 pClass">2번째 단락</p>
-		<p id="p3" class="p1 pClass">3번째 단락</p>
-		<p id="p4" class="p1 pClass">4번째 단락</p>
-		<p id="p5" class="p1 pClass">5번째 단락</p>
-		<p id="p6" class="p1 pClass">6번째 단락</p>
-		<p id="p7" class="p1 pClass">7번째 단락</p>
+		<p id="p1" onclick="removeElement(this);" class="p1 pClass">1번째 단락</p>
+		<p id="p2" onclick="removeElement(this);" class="p1 pClass">2번째 단락</p>
+		<p id="p3" onclick="removeElement(this);" class="p1 pClass">3번째 단락</p>
+		<p id="p4" onclick="removeElement(this);" class="p1 pClass">4번째 단락</p>
+		<p id="p5" onclick="removeElement(this);" class="p1 pClass">5번째 단락</p>
+		<p id="p6" onclick="removeElement(this);" class="p1 pClass">6번째 단락</p>
+		<p id="p7" onclick="removeElement(this);" class="p1 pClass">7번째 단락</p>
 	</div>
 	
 	<script>
+	
+		function removeElement(elem){
+			// click event가 발생한 p tag 요소
+			console.log(elem);
+			// 해당 요소를 문서에서 삭제
+			elem.remove();
+		}
+	
 		// .target class 속성 추가
 		function addClass(){
 			/*
@@ -82,8 +90,25 @@
 		// target 요소의 자식 요소 중 첫번째 요소 삭제
 		function removeFirst(){
 			let parent = document.getElementById("target");
-			let child = parent.firstchild;
+			let child = parent.firstChild;
 			console.log(child);
+			// parent 요소의 자식 요소 중 첫번째 자식 HTML tag Node
+			child = parent.firstElementChild;
+			console.log(child);
+			
+			if(child != null){
+				// 매개변수로 전달된 자식요소를 삭제
+				parent.removeChild(child);
+			}
+		}
+		
+		// 마지막 자식 요소 삭제
+		function removeLast(){
+			let parent = document.querySelector("#target");
+			let lastChild = parent.lastElementChild;
+			if(lastChild != null){
+				parent.removeChild(lastChild);
+			}
 		}
 		
 	</script>
