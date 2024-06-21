@@ -1,0 +1,30 @@
+<!-- js_dom/07_dom_node_remove.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.bg{
+		background-color: skyblue;
+	}
+	
+	.pink{
+		color:pink;
+	}
+	
+	.target{
+		border:1px solid red;
+		padding:20px;
+		margin:10px auto;
+		color:skyblue;
+	}
+</style>
+</head>
+<body>
+	<button onclick="addClass();" class="bg">class 속성 추가</button>
+	<button onclick="removeClass();" class="bg pink" >class 속성 삭제</button>
+	<button onclick="removeFirst();" class="pink">첫번째 요소 삭제</button>
+	<button onclick="removeLast();">마지막 요소 삭제</button>
+</body>
+</html>

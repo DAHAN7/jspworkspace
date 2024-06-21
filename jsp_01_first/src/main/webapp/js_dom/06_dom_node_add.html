@@ -46,6 +46,24 @@
 			let text = document.querySelector("#text");
 			target.after(text);
 		};
+		
+		let addTextNode = document.getElementById("addTextNode");
+		addTextNode.onclick = function(){
+			// 입력 태그에 작성된 value 값을 컨텐츠로 추가
+			let input = document.querySelector("#text");
+			let value = input.value;
+			// <h1>Hello HTML!!!</h1>
+			// target.append(value);
+			/*
+			let textNode = document.createTextNode(value);
+			target.appendChild(textNode);
+			*/
+			
+			let h2 = document.createElement("h2");
+			let textNode = document.createTextNode("Last Time");	
+			h2.appendChild(textNode);
+			target.append(h2);
+		};
 	
 	</script>
 </body>
