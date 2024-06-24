@@ -1,0 +1,18 @@
+<!-- js_dom/13_dom_event_default.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>default event</title>
+<script>
+	function query(){
+		// alert('a tag click!!!!!');
+		let answer = confirm("네이버로 이동하시겠습니까?");
+		return answer;
+	}
+</script>
+</head>
+<body>
+	<a href="https://naver.com" onclick="return query();" >네이버로 이동하기</a>
+</body>
+</html>
