@@ -32,9 +32,64 @@
     <br/>
     <br/>
     <div id="imageGallery"></div>
-
+	
     <script>
-        // 여기에 JavaScript 코드를 작성
+    // 여기에 JavaScript 코드를 작성
+    // key event 추가
+    document.querySelector("#imageInput").onkeydown = function(e){
+    	if(e.keyCode == 13){		// Enter
+    		addImage();
+    	}
+    }
+    
+    
+    function addImage(){
+    	// alert('click!!');
+    	let imageInput = document.querySelector("#imageInput");
+    	let imgUrl = imageInput.value;
+    	
+    	// 입력된 text가 빈문자열(공백)이 아니면 imgUrl.length !== 0
+    	if(imgUrl !== ''){
+    		// 이미지 태그 생성
+    		let img = document.createElement("img");
+    		img.src = imgUrl;
+    		img.setAttribute("alt","존재하지 않는 이미지 입니다.");
+    		
+    		img.onclick = function(){
+    			this.remove();
+    		};
+    		
+    		document.getElementById("imageGallery").appendChild(img);
+    		imageInput.value = '';
+    		imageInput.focus();
+    	}
+    }
+    
+    document.getElementById("addImageButton").addEventListener('click',addImage);
+         
+        /*
+        document.getElementById("addImageButton").addEventListener('click',function(){
+        	
+          	let input = document.getElementById("imageInput");
+        	let imageUrl = input.value;
+        	
+        	if(imageUrl){
+        		let img=document.createElement('img');
+        		img.src=imageUrl;
+        		img.alt='User provided image';
+        		
+        		img.addEventListener('click',function(){
+        			img.remove();
+        		});
+        		let gallery = document.getElementById('imageGallery');
+        		gallery.appendChild(img);
+        		
+        		inpuyt.value='';
+        	}else{
+        		alert('존재하지 않는 이미지입니다.');
+        	}
+        });
+        */
     </script>
 </body>
 </html>

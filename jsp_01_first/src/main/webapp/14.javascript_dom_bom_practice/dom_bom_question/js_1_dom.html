@@ -10,11 +10,20 @@
     
     <script>
        // 여기에 JavaScript 코드를 작성
-  		function changeStyle() {
+		document.querySelector("#btn").onclick=function(){
+			//tag요소.innerHTML,innerText,textContent
+			let text = '<span style="color:red;">Hello, World!</span>';
+    	   let title=document.getElementById("title");
+    	   //title.innerHTML = text;
+    	   title.innerText=text;
+       };
+       
+       /*function changeStyle() {
 					let title = document.getElementById("title");
 					title.innerText="Hello,World!"
 		}
-       document.getElementById("btn").addEventListener("click",changeStyle);
+       document.getElementById("btn").addEventListener("click",changeStyle);*/
+       
     </script>
 </body>
 </html>
