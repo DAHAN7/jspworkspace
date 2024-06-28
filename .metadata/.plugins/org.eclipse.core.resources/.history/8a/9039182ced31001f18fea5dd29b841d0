@@ -1,0 +1,53 @@
+<!-- js_dom/14_dom_event_key.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Key Event</title>
+</head>
+<body>
+	
+	<form name="loginForm" action="13_dom_event_default.html" target="_blank">
+		ID : <input type="text" name="id" id="uid"/>
+		<br/>
+		PW : <input type="password" name="pw" id="upw"/>
+		<br/>
+		<input type="button" id="btn" value="전송"/>
+		<input type="reset" value="새로작성"/>
+	</form>
+	
+	<script>
+		let id = document.querySelector("#uid");
+		id.focus();	// id 입력 태그 요소에 focus 부여
+		
+		let pw = document.querySelector("#upw");
+		let btn = document.querySelector("#btn");
+		
+		// id 입력 태그 요소에서 key가 눌러졌을 때
+		id.onkeydown = function(event){ // KeyEvent
+			let keyName = event.key;
+			let keyCode = event.keyCode;
+			console.log(`key : ${keyName}, code : ${keyCode}`);
+			console.log("id 입력태그 키 입력");
+			// if(keyCode == 13){
+			if(keyName == "Enter"){
+				// Enter
+				pw.focus();
+			}
+		};
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+<!-- js_dom/05_dom_node_find.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>find node</title>
+</head>
+<body>
+	<header>
+		<nav id="grandParents">
+			<ul id="parents">
+				<li id="one">첫째</li>
+				<li id="two">둘째</li>
+				<li id="three">셋째</li>
+			</ul>
+		</nav>
+	</header>
+</body>
+</html>

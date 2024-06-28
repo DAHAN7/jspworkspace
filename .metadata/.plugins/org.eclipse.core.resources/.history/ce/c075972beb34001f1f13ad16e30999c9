@@ -1,0 +1,11 @@
+package servlet;
+
+import jakarta.servlet.http.HttpServlet;
+
+public class LifeCycleServlet extends HttpServlet{
+
+	private static final long serialVersionUID = 2117214983822497285L;
+	public LifeCycleServlet() {
+		System.out.println("LifeCycleServlet 생성");
+	}
+}

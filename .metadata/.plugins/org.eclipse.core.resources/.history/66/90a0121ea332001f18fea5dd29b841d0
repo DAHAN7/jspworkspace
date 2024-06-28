@@ -1,0 +1,19 @@
+<!-- js_bom/06_bom_set_time_out.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>setTimeout(); clearTimeout();</title>
+</head>
+<body>
+	<!-- setTimeout : 지정된 시간만큼 지연 후 기능 수행 -->
+	<button onclick="showAlert();">눌러보세요!</button>
+	
+	<script>
+	function showAlert(){
+		// window.setTimeout(지연 후 실행될 함수,지연시간 ms);
+		window.setTimeout(,3000);
+	}
+	</script>
+</body>
+</html>

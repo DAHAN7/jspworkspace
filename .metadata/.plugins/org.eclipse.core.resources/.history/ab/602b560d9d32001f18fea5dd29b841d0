@@ -1,0 +1,16 @@
+<!-- js_bom/05_bom_screen.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>BOM Screen Scroll</title>
+	<script>
+		window.onload=function(){
+			
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

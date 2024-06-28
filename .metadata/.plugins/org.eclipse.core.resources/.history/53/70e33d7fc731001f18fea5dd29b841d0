@@ -1,0 +1,38 @@
+<!-- js_dom/09_dom_event.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM event</title>
+</head>
+<body>
+	<input type="button" value="Test" id="test"/>
+	<input type="button" value="test event 제거" id="removeEvent"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

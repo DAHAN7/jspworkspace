@@ -1,0 +1,30 @@
+<!-- js_dom/04_dom_handle_attribute.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>attribute 속성 제어</title>
+</head>
+<body>
+
+	<img src="../img/pome.png" 
+	     alt="pome 이미지 입니다." 
+	     id="image" 
+	     width="120" 
+	     height="100"
+	     data-pome="../img/pome.png"
+	     data-poodle="../img/poodle.png"/>
+	     
+	     
+	     
+	
+</body>
+</html>
+
+
+
+
+
+
+
+

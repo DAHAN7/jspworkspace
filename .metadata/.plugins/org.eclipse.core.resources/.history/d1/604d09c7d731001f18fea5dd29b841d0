@@ -1,0 +1,39 @@
+<!-- js_dom/12_dom_mouse.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mouse Event</title>
+</head>
+<body>
+	<h3>마우스 관련 이벤트</h3>
+	<hr/>
+	<div>
+		<!-- 
+			mousedown : 마우스 좌클릭
+			mouseup : 마우스 좌클릭 해제
+			wheel : 마우스 휠 이벤트 감지 
+		-->
+		마우스 관련 <span onwheel="wheel(event);">이벤트(타겟)</span>가 발생합니다.
+	</div>
+	
+	<script>
+	
+		function wheel(e){
+			console.log("wheel");
+			// 마우스가 아래쪽으로 휠이 움직이면 음수
+			// 마우스가 윗쪽으로 휠이 움직이면 양수
+			console.log(e.wheelDelta);
+		}	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

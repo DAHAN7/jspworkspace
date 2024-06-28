@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>초급 문제 1</title>
+</head>
+<body>
+    <h1 id="title">Change this text</h1>
+    <button id="btn">텍스트 변경</button>
+    
+    <script>
+       // 여기에 JavaScript 코드를 작성
+    </script>
+</body>
+</html>

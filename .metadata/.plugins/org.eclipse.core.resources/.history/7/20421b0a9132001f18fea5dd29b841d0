@@ -1,0 +1,13 @@
+<!-- 01_bom_navigator.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM navigator</title>
+</head>
+<body>
+	<script>
+	console.log(navigator);
+	</script>
+</body>
+</html>

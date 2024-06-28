@@ -1,0 +1,46 @@
+<!-- 03_dom_handle_text.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>handle text content</title>
+</head>
+<body>
+	<div id="ex">
+		<b>여기는 div로 선언되었습니다.</b>
+		<script>
+			let a = 10;
+		</script>
+	</div>
+	<input type="text" name="exName" id="exName"/>
+	<br/>
+	<a href="#" onclick="get();"> div 요소 내용 출력</a> 
+	<br/>
+	<a href="#" onclick="set();"> div 요소 내용 변경</a>
+	<script>
+		// div#ex 요소의 내부 컨텐츠 정보 읽기
+		function get(){
+			let ex = document.getElementById("ex");
+			console.log(ex);
+			console.log("---------------------------------");
+			console.log("브라우저가 해석 할 수 있는 전체 컨텐츠");
+			console.log(ex.innerHTML);
+			console.log("---------------------------------");
+			console.log("사용자에게 출력되는 텍스트 컨텐츠!");
+			console.log(ex.innerText);
+			console.log("---------------------------------");
+			console.log("태그 내부에 존재하는 모든 텍스트");
+			console.log(ex.textContent);
+		}
+		
+		// exName 입력필드에 작성된 내용으로
+		// #ex div 태그요소의 컨텐츠를 변경
+		function set(){
+			let ex = documenet.getElementById("ex");
+			console.log(ex);
+			console.log(exName);
+		}
+	
+	</script>
+</body>
+</html>

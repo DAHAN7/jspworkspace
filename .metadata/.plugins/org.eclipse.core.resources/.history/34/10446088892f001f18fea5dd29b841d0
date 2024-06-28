@@ -1,0 +1,13 @@
+<!-- js_dom/04_dom_handle_attribute.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>attribute 속성 제어</title>
+</head>
+<body>
+
+	<img src="../img/pome.png"/>
+	
+</body>
+</html>

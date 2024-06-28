@@ -1,0 +1,21 @@
+<!-- js_bom/02_bom_console.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	// 출력 탭
+	window.console.log("기본");
+	let a = "hello";
+	let b = 3.141592;
+	let c = false;
+	
+	console.log(a+b+c);
+	console.log(a,b,c);
+</script>
+</head>
+<body>
+
+</body>
+</html>

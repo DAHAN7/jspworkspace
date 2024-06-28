@@ -1,0 +1,31 @@
+<!-- js_bom/08_bom_interval_catch.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>interval catch</title>
+<style>
+	#box{
+		position:absolute;
+		width:70px;
+		height:70px;
+		top:50%;
+		left:50%;
+		background-color:darksalmon;
+		color:white;		
+	}
+</style>
+</head>
+<body>
+	<div id="box">잡아랏!</div>
+	<script>
+		let x=0, y=0;
+		
+	</script>
+</body>
+</html>
+
+
+
+
+

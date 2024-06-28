@@ -1,0 +1,17 @@
+<!-- page_import.jsp -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP import</title>
+</head>
+<body>
+	<%
+		SimpleDateFormat sdf = new SimpleDateFormat(
+			"yyyy-MM-dd"
+		);
+		String date= sdg.format(new Date());
+	%>
+</body>
+</html>

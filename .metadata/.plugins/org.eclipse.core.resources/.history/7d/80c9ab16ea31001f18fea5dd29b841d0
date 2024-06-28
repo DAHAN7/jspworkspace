@@ -1,0 +1,29 @@
+<!-- js_dom/14_dom_event_key.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Key Event</title>
+</head>
+<body>
+	
+	<form name="loginForm" action="13_dom_event_default.html" target="_blank">
+		ID : <input type="text" name="id" id="uid"/>
+		<br/>
+		PW : <input type="password" name="pw" id="upw"/>
+		<br/>
+		<input type="button" id="btn" value="전송"/>
+		<input type="reset" value="새로작성"/>
+	</form>
+	
+	<script>
+		let id = document.querySelector("#uid");
+		
+		let pw = document.querySelector("#upw");
+		let btn = document.querySelector("#btn");
+		
+		
+	
+	</script>
+</body>
+</html>

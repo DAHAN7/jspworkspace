@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load Events Example</title>
+</head>
+<body>
+    <h1 id="onloadHeading">This text will change on window.onload</h1>
+    <h1 id="domContentLoadedHeading">This text will change on DOMContentLoaded</h1>
+    <script>
+        window.onload = function() {
+            var onloadHeading = document.getElementById("onloadHeading");
+            onloadHeading.innerHTML = "Page fully loaded!";
+            onloadHeading.style.color = "green";
+        };
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var domContentLoadedHeading = document.getElementById("domContentLoadedHeading");
+            domContentLoadedHeading.innerHTML = "DOM fully loaded!";
+            domContentLoadedHeading.style.color = "red";
+        });
+    </script>
+</body>
+</html>

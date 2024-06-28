@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Welcome JSP!!!</h1>
+	<h2>Dynamic Web Site</h2>
+	<a href="/jsp_02_servlet/login.html">로그인 페이지</a> <br/>
+	<!-- <a href="../login.html">로그인 페이지</a> <br/> -->
+	<a href="choiceFruit.html">과일 선택 페이지</a>
+</body>
+</html>

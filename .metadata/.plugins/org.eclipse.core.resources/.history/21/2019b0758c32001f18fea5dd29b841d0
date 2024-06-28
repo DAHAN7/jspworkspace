@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window onload Example</title>
+</head>
+<body>
+    <h1 id="heading">Hello, World!</h1>
+    <script>
+        window.onload = function() {
+            var heading = document.getElementById("heading");
+            heading.innerHTML = "Page is fully loaded!";
+            heading.style.color = "blue";
+        };
+    </script>
+</body>
+</html>

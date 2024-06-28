@@ -1,0 +1,16 @@
+<!-- js_dom/13_dom_event_default.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>default event</title>
+<script>
+function query(){
+	alter('a tag click!!!!');
+}
+</script>
+</head>
+<body>
+	<a href="https://naver.com" onclick="query();" >네이버로 이동하기</a>
+</body>
+</html>

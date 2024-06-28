@@ -1,0 +1,27 @@
+<!-- js_bom/07_bom_interval.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM interval clearInterval</title>
+<script>
+	/*
+		지정된 시간을 간격으로 함수를 반복적으로 수행
+		window.setInterval(실행할 함수, 시간간격);
+	*/
+	function changeColor(){
+		window.setInterval(function(){
+			
+			let elem = document.querySelector("#target");
+			
+		} ,500);
+	}
+</script>
+</head>
+<body onload="changeColor();">
+	<div id="target">
+		<p>this is paragraph</p>
+	</div>
+	<button>stop</button>
+</body>
+</html>

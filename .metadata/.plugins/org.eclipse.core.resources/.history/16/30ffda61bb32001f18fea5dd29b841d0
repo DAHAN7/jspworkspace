@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>초급 문제</title>
+</head>
+<body>
+    <p>Counter: <span id="counter">0</span></p>
+    <button id="increaseButton">Increase</button>
+    <button id="decreaseButton">Decrease</button>
+
+    <script>
+       // 여기에 JavaScript 코드를 작성
+       let btn = document.querySelector("input[type=button]");
+    </script>
+</body>
+</html>

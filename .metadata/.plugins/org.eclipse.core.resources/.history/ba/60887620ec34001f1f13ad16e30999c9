@@ -1,0 +1,52 @@
+package servlet;
+
+import java.io.IOException;
+
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+public class LifeCycleServlet extends HttpServlet{
+
+	private static final long serialVersionUID = 2117214983822497285L;
+	public LifeCycleServlet() {
+		System.out.println("LifeCycleServlet 생성");
+	}
+	// servlet Class의 인스턴스가 생성되고 요청 처리할 준비가 완료되면 최초에 한번 호출되는 메소드
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("LifeCycleServlet init()호출");
+		String servletName=config.getServletName("Servlet Name:"+servletName);
+		// servlet 이 등록된 전체 애플리케이션 정보
+		// 생성된 프로젝트 별로 한개의 context 객체 생성하여 공유
+		ServletContext application = config.getServletContext();
+		String contextPath = appliction.getContextPath();
+		System.out.println("context path:"+contextPath);
+				
+				
+		}
+	@Override
+	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.service(arg0, arg1);
+	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doGet(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		super.doPost(req, resp);
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		super.destroy();
+	}
+}

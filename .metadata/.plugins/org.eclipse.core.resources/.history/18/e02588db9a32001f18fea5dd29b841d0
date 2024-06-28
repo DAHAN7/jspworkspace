@@ -1,0 +1,25 @@
+<!-- js_bom/03_bom_location.html -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BOM location</title>
+</head>
+<body>
+	<script>
+		/*  
+			location - 주소표시줄 URL을 조작 하는 객체
+		*/
+		console.log(window.location.href);
+		console.log(location.hostname);
+		console.log(location.pathname);
+		console.log(location.port);
+		console.log(location.protocol);
+		console.log(location.search);  // query string
+		console.log(location.toString());
+	</script>
+	
+	<button onclick="location.href = 'https://www.naver.com';">네이버 이동 href</button> <br/>
+	<button onclick="location.replace('https://www.naver.com');">네이버 이동 replace</button>
+</body>
+</html>
