@@ -1,7 +1,21 @@
 INDEX VERSION 1.134
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4073716465.index
+\jsp_03_servlet_life_cycle\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1270762416.index
+\jsp_08_session_cookie\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\190237749.index
+\jsp_08_session_cookie\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\943110664.index
 \jsp_04_script_tag\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2745932014.index
 \jsp_05_page_directive_tag\src\main\java
-C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4073716465.index
-\jsp_03_servlet_life_cycle\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\808184291.index
+\jsp_07_implict_object\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4287686916.index
+\jsp_06_include\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1374735248.index
+\jsp_07_implict_object\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3878732535.index
+\jsp_06_include\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3847816540.index
+\jsp_06_include\src\main\java
