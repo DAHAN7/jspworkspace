@@ -6,6 +6,7 @@
 <title>handle text content</title>
 </head>
 <body>
+<!-- div요소와 입력 필드,출력 및 변경 버튼을 포함한 예제 -->
 	<div id="ex">
 		<b>여기는 div로 선언되었습니다.</b>
 		<script>
@@ -14,8 +15,10 @@
 	</div>
 	<input type="text" name="exName" id="exName"/>
 	<br/>
+	<!-- 출력 버튼을 클릭하면 div요소의 텍스트 내용을 콘솔에 출력 -->
 	<a href="#" onclick="get();"> div 요소 내용 출력</a> 
 	<br/>
+	<!-- 변경버튼을 클릭하면 입력 필드의 값으로 div요소의 텍스트 내용을 변경 -->
 	<a href="#" onclick="set();"> div 요소 내용 변경</a>
 	<script>
 		// div#ex 요소의 내부 컨텐츠 정보 읽기
@@ -48,20 +51,21 @@
 		}
 	</script>
 	<h1>handle Style</h1>
+	<!-- 스타일 변경 버튼이 포함된 예제 -->
 	<p id="p1">this is paragraph</p>
 	<button onclick="changeStyle();">눌러보세용.</button>
 	
 	<script>
 		console.log(document.head);
 		console.log(document.body);
-		
+		//p1요소의 스타일을 변경하는 함수
 		function changeStyle(){
 			let p1 = document.getElementById("p1");
-			p1.style.color = "hotpink";
+			p1.style.color = "hotpink";//글자색을 핫핑크로 변경
 			// font-style:italic;
 			p1.style.fontStyle = "italic";
-			document.body.style.backgroundColor = "skyblue";
-			document.body.style.backgroundImage = "url(../img/poodle.png)";
+			document.body.style.backgroundColor = "skyblue";//body의 배경색을  skyblue로 변경
+			document.body.style.backgroundImage = "url(../img/poodle.png)";//body의 배경이미지 설정
 		}
 	
 	</script>	

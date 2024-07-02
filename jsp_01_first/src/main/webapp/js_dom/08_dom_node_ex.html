@@ -31,7 +31,7 @@
 	</ul>
 	<script>
 		let toDoList = document.querySelector("#toDoList");
-		
+		// 초기에 몇가지 할일 목록을 생성하여 표시
 		for(let i = 0; i < 5; i++){
 			let li = document.createElement("li");
 			li.innerText = '할일 추가 - '+ i;
@@ -93,21 +93,21 @@
 			let todo = document.getElementById("todo");
 			
 			// 삭제할 요소를 저장할 변수
-			let removeTarget = null;
+			let removeTarget = null;//삭제 대상 초기화
 			// todos 목록에서 todo input text에 저장된 문자열과 일치하는 content를 가진
 			// 할일 검색
 			for(let i = 0; i < todos.length; i++){
 				console.log(todo.value);		 // 입력 텍스트
 				console.log(todos[i].innerText); // 할일 텍스트
 				if(todo.value == todos[i].innerText){
-					removeTarget = todos[i];
-					break;
+					removeTarget = todos[i];//일치하는 항목 찾으면 삭제대상으로 설정
+					break;// 찾았으니 반복문 종료
 				}
 			} // end for
 			
 			if(removeTarget != null){
 				// text가 일치하는 li 태그 요소 삭제
-				removeTarget.remove();
+				removeTarget.remove();// 삭제대상이 있다면 삭제
 			}else{
 				alert('동일한 할일을 찾지 못하였습니다.');	
 			}

@@ -20,11 +20,11 @@
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
 		String[] hobbies = request.getParameterValues("hobbies");
-		
+		// 성별 파라미터가 존재할 경우,성별 값을 변환하여 저장
 		if(gender != null){
 			gender = (gender.equals("male")) ? "남성"  : "여성";
 		}
-		
+		// 각 파라미터 값을 출력
 		out.println("name : " + name +"<br/>");
 		out.println("gender : " + gender +"<br/>");
 		out.println("hobbies : " + Arrays.toString(hobbies) +"<br/>");
@@ -46,7 +46,7 @@
 		// 요청 경로 - 현재 서버의 프로젝트별 전체 요청 경로
 		String requestURI = request.getRequestURI();
 		out.println("requestURI : " + requestURI + "<br/>");
-		
+		// 문자열 결합 예시
 		String str = "text";
 		str += " append";
 		str += " result";

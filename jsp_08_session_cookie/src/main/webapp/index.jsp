@@ -8,12 +8,9 @@
 <body>
 	<%@ include file="check.jsp" %>
 	<h1>MAIN PAGE</h1>
-	<a href="addCookie.jsp">쿠키 추가</a>
-
+	<a href="addCookie.jsp">쿠키 추가</a> <br/>
+	<a href="removeCookie.jsp">REMOVE Cookie</a><br/>
+	<a href="addSession.jsp">addSession</a>
+	<h1><%= session.getAttribute("uid") %></h1>
 </body>
 </html>
-
-
-
-
-

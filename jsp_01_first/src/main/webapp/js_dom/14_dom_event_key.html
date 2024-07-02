@@ -6,7 +6,7 @@
 <title>Key Event</title>
 </head>
 <body>
-	
+	<!--  로그인 폼 -->
 	<form name="loginForm" action="13_dom_event_default.html" target="_blank">
 		ID : <input type="text" name="id" id="uid"/>
 		<br/>
@@ -17,6 +17,7 @@
 	</form>
 	
 	<script>
+		//ID 입력 필드에 포커스를 줌
 		let id = document.querySelector("#uid");
 		id.focus();	// id 입력 태그 요소에 focus 부여
 		
@@ -37,11 +38,15 @@
 				pw.focus();
 			}
 		};
+	// 비밀번호입력 필드에서 Enter키가 눌렀을때 처리
 	pw.onkeydown =function(e){
 		if(e.keyCode==13){
+			// Enter 키가 눌렸을대 전송 버튼 클릭
+		
 		btn.click();	
 		}
 	};
+	// 전송버튼 클릭 시 폼 제출
 	btn.onclick= function(){
 		document.loginForm.submit();
 		};

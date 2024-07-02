@@ -6,7 +6,7 @@
 <title>attribute 속성 제어</title>
 </head>
 <body>
-
+	<!--  이미지 요소와 두개의 버튼이 포함된 예제 -->
 	<img src="../img/pome.png" 
 		 alt="pome 이미지 입니다." 
 		 id="image" 
@@ -16,37 +16,41 @@
 		 data-poodle="../img/poodle.png" />
 	<br />
 	<!-- code 자동 정렬    ctrl +shift + f -->
+	<!--  이미지 속성 변경 버튼 -->
 	<input type="button" value="눌러보세용" onclick="changeImage();" />
+	<!--  데이터 속성 변경 버튼 --> 
 	<input type="button" value="눌러보세용" onclick="changeImg();" />
 
 	<script>
+		// 이미지 요소를 가져와 변수에 저장
 		let image = document.getElementById("image");
 		console.log(image.src);
 		console.log(image.width);
 		console.log(image.height);
-		
+		// 이미지 속성 변경 함수
 		function changeImage(){
-			image.src = "../img/poodle.png";
-			image.width = 300;
-			image.height = "400";
+			image.src = "../img/poodle.png";//이미지 경로 변경
+			image.width = 300;//이미지 너비 변경
+			image.height = "400";//이미지 높이 변경
 		}
 		
+		// 데이터 속성 변경함수
 		function changeImg(){
-			console.log(image.dataPome);
-			
+			console.log(image.dataPome);// undefined출력
+			// 데이터 속성 값 가져오기
 			let pome = image.getAttribute("data-pome");
-			console.log(pome);
+			console.log(pome);//"../img/pome.png"출력
 			
 			let poodle = image.getAttribute("data-poodle");
-			console.log(poodle);
+			console.log(poodle);//"../img/poodle.png"출력
 			
 			let src = image.getAttribute("src");
-			console.log(src);
+			console.log(src);//"../img/pome.png"출력
 			
 			// image.title = "강아지 그림입니다.";
 			image.setAttribute("title","강아지 그림입니다!!!!");
 			image.setAttribute("src", poodle);
-			
+			// 새로운 사용자 정의 데이터 속성 추가
 			image.setAttribute("data-rice","../img/rice.png");
 			// 사용자 정의형 속성을 제어 할 수 있게 제공되는 속성
 			console.log(image.dataset);

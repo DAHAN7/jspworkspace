@@ -6,17 +6,21 @@
 <title>change onload</title>
 </head>
 <body onload="changeImage();">
+	<!-- 이미지 변경을 위한 select요소 -->
 	<select id="sel" onchange="changeImage();">
 		<option value="../img/apple.png">사과</option>
 		<option value="../img/banana.png" selected>바나나</option>
 		<option value="../img/mango.png">망고</option>
 	</select>
+	<!-- 이미지 크기를 표시할 span요소 -->
 	<span id="size">이미지 크기</span>
 	<p>
+		<!-- 초기에는 선택된 바나나 이미지를 출력하는 img요소 -->
 		<img id="myImg" src="../img/apple.png" alt="과일"/>
 	</p>
 	
 	<script>
+		// 이미지를 변경하고 크기를 표시하는 함수
 		function changeImage(){
 			let sel = document.getElementById("sel"); 		// select box
 			let size = document.getElementById("size");		// span tag

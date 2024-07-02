@@ -9,6 +9,8 @@ C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.ecl
 \jsp_04_script_tag\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2745932014.index
 \jsp_05_page_directive_tag\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3326836369.index
+\jsp_09_redirect_forward\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\808184291.index
 \jsp_07_implict_object\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4287686916.index

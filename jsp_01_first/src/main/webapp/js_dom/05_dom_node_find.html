@@ -22,14 +22,15 @@
 		console.log(every);
 		
 		// 부모 요소 
+		// 아이디가"one"인 요소를 변수에 할당
 		let one = document.getElementById("one");
-		
-		parent = one.parentNode;
+		// one요소의 부모 노드를 찾아 출력
+		let parent = one.parentNode;
 		console.log(parent);
-		
+		// 부모요소의 부모 요소를 찾아 출력(grandParents)
 		let grandParents = parent.parentNode;
 		console.log(grandParents);
-		
+		// one요소의 부모요소의 부모요소를 직접찾아 출력
 		grandParents = one.parentNode.parentNode;
 		console.log(grandParents);
 		
@@ -37,7 +38,7 @@
 		// 기준 요소 : 아이디 속성 값이 two 인 li 태그요소
 		let two = document.getElementById("two");
 		
-		// 다음 형제 요소
+		// 다음 형제 요소를 찾아 출력
 		let next = two.nextSibling;
 		console.log(next);
 		
@@ -47,9 +48,10 @@
 		
 		
 		// 첫번째 자식 요소
+		// parents 요소의 첫번째 자식요소를 변수에 할당
 		one = parents.firstChild;
 		console.log(one);
-		
+		// 첫번재 자식요소의 다음 형제 요소를 찾아 출력
 		two = one.nextSibling;
 		console.log(two);
 		

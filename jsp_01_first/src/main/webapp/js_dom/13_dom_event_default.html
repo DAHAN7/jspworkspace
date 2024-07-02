@@ -5,15 +5,16 @@
 <meta charset="UTF-8">
 <title>default event</title>
 <script>
+	// 사용자가 확인을 선택하면 네이버로 이동하는 함수
 	function query(){
 		// alert('a tag click!!!!!');
 		let answer = confirm("네이버로 이동하시겠습니까?");
 		return answer;
 	}
-	
+	//이벤트의 기본동작을 막는 함수
 	function noAction(e){
 		// event 객체에 저장된 기본 이벤트를 무시한다.
-		e.preventDefault();
+		e.preventDefault();//이벤트의 기본 동작을 막음
 	}
 </script>
 </head>
@@ -21,6 +22,7 @@
 	<!-- query(); 에서 반환된 boolean 값으로 event 실행 여부 판단 -->
 	<a href="https://naver.com" onclick="return query();" >네이버로 이동하기</a>
 	<br/>
+	<!--  자바스크립트로 직접 경고ㅎ창을 띄우는 링크 -->
 	<a href="javascript:alert('안가지롱');">이동할 페이지 하이퍼링크 처리를 자바스크립트로...</a>
 	<br/>
 	<!-- 
@@ -29,6 +31,7 @@
 	 -->
 	<a href="https://naver.com" onclick="noAction(event);">안간다!</a>
 	<hr/>
+	<!--  체크박스와 버튼이 있는 폼 -->
 	<form name="myForm" action="12_dom_mouse.html" target="_blank">
 		<label>
 			<input type="checkbox" name="eat" value="bread"/> 빵
@@ -55,11 +58,11 @@
 			document.querySelector("input[value='bread']").click();
 		};
 		
-		
+		// 일반버튼 클릭시 폼 제출
 		let btn = document.getElementById("btn");
 		btn.onclick = function(){
 			// myForm form 태그의 submit 이벤트 실행
-			document.myForm.submit();	
+			document.myForm.submit();//폼 제출	
 		};
 	</script>
 </body>

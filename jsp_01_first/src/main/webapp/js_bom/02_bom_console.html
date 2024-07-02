@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	// 출력 탭
+	// console.log()를 사용하여 콘솔에 메시지를 출력합니다.
 	window.console.log("기본");
-	
+	// 변수 선언과 함께 다양한 데이터 타입의 값을 출력합니다.
 	let a = "hello";
 	let b = 3.141592;
 	let c = false;
@@ -15,9 +15,10 @@
 	console.log(a + b + c);
 	console.log(a , b , c);
 	
-	// pattern
+	// 출력패턴을 지정해서 출력합니다.
 	console.log("%s는 문자열, %d는 수치형", a , b);
 	console.log("%s는 문자열, %f는 실수", a , b);
+	// 다양한 로그 레벨을 사용하여 메시지를 출력합니다.
 	console.info("정보는 log랑 동일하게 출력");
 	console.warn("경고!!!!!");
 	console.error("오류!!!!!!!!");
@@ -36,20 +37,20 @@
 		}
 	} // end for
 	console.log(sum);
-	console.timeEnd("타이머 1");
+	console.timeEnd("타이머 1");// 타이머 종료 및 소요시간 출력
 	for(let i = 0; i <= 100000; i++){}
 	console.timeEnd("타이머 2");
 	
-	// 객체 배열을 테이블 형식으로 출력하는 함수
+	// 객체 배열을 테이블 형식으로 출력하는 함수입니다.
 	const users = [
 		{name : 'Choi', age : 25, city : "New York"},
 		{name : 'Kim', age : 35, city : "한양"},
 		{name : 'Lee', age : 55, city : "개성"}
 	];
 	
-	console.log(users);
-	console.table(users);
-	console.table(users, ['name','city']);
+	console.log(users);// 객체 배열을 일반 로그 형태로 출력
+	console.table(users);/// 객체 배열을 테이블 형태로 출력
+	console.table(users, ['name','city']);// 선택된 열만 테이블 형태로 출력
 	
 </script>
 </head>

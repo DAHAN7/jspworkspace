@@ -38,7 +38,7 @@
 	</div>
 	
 	<script>
-	
+		// 자바스크립트로 DOM요소를 추가하고 제거하는 함수들을 정의한 스크립트
 		function removeElement(elem){
 			// click event가 발생한 p tag 요소
 			console.log(elem);
@@ -78,7 +78,7 @@
 		function removeClass(){
 			
 			let elP = document.querySelectorAll("#target > p");
-			
+			// 모든 p태그 요소의 'target'클래스를 토글하여 제거
 			for(let i = 0; i < elP.length; i++){
 				console.log(elP[i]);
 				// elP[i].classList.remove("target");
@@ -95,7 +95,7 @@
 			// parent 요소의 자식 요소 중 첫번째 자식 HTML tag Node
 			child = parent.firstElementChild;
 			console.log(child);
-			
+			// 첫번재 자식요소가 존재하면 삭제
 			if(child != null){
 				// 매개변수로 전달된 자식요소를 삭제
 				parent.removeChild(child);
@@ -106,6 +106,7 @@
 		function removeLast(){
 			let parent = document.querySelector("#target");
 			let lastChild = parent.lastElementChild;
+			// 마지막 자식 요소가 존재하면 삭제
 			if(lastChild != null){
 				parent.removeChild(lastChild);
 			}

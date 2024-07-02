@@ -17,12 +17,14 @@
 	}
 </style>
 <script>
+	//마우스가 요소위에 진입했을대 호출되는 함수
 	function mouseIn(el){
 		el.style.backgroundColor = 'pink';
 		console.log("mouseIn");
 	}
-	
+	// 마우스가 요소를 빠져나갔을때 호출되는 함수
 	function mouseOut(el){
+		// 요소의 배경색을 하늘색으로 변경
 		el.style.backgroundColor = 'skyblue';
 		console.log("mouseOut");
 	}
@@ -31,12 +33,14 @@
 </head>
 <body>
 	<h1>MouseEnter MouseLeave</h1>
+	<!-- onmouseenter 이벤트와 onmouseleave이벤트를 이용한 마우스 이벤트 처리 -->
 	<div id="box" onmouseenter="mouseIn(this);" 
 	              onmouseleave="mouseOut(this);">
 		<p>마우스를 이 요소 위로 이동하세요!</p>
 	</div>
 	<br/>
 	<h1>MouseOver MouseOut</h1>
+	<!-- onmouseover 이벤트와 onmouseout이벤트를 이용한 마우스 이벤트 처리 -->
 	<div id="box" onmouseover="mouseIn(this);" 
 	              onmouseout="mouseOut(this);">
 		<p>마우스를 이 요소 위로 이동하세요~!</p>

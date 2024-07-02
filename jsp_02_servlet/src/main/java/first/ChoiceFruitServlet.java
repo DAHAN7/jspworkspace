@@ -35,6 +35,7 @@ public class ChoiceFruitServlet extends HttpServlet {
 			}
 		}else {
 			// fruits 라는 name으로 전달된 데이터가 존재하지 않음
+			// 사용자에게 경고메세지를 출력하고 이전 페이지로 이동합니다.
 			out.println("<script>");
 			out.println("alert('선택된 과일이 없습니다.');");
 			out.println("history.go(-1);");

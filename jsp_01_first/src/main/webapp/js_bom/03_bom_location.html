@@ -10,23 +10,32 @@
 		/*  
 			location - 주소표시줄 URL을 조작 하는 객체
 		*/
+		//현재 페이지의 URL정보를 콘솔에 출력합니다.
 		console.log(window.location.href);
+		//호스트네임을 출력합니다.
 		console.log(location.hostname);
+		//경로를 출력합니다.
 		console.log(location.pathname);
+		//포트번호를 출력합니다.
 		console.log(location.port);
+		//프로토콜을 출력합니다.
 		console.log(location.protocol);
+		// 쿼리스트링을 출력합니다.
 		console.log(location.search);  // query string
+		// location객체를 문자열로 변환하여 출력합니다.
 		console.log(location.toString());
 	</script>
-	
+	<!-- 버튼 클릭시 href 속성을 통해 페이지 이동 -->
 	<button onclick="location.href = 'https://www.naver.com';">네이버 이동 href</button> <br/>
 	<!-- 
 		href 속성을 변경해서 페이지 이동  -> 기록에 저장
 		replace 에 매개변수로 전달된 페이지로 이동 - > 기록에 저장하지 않음
 	 -->
+	<!-- 버튼 클릭시 href속성을 통해 페이지 이동 -->
 	<button onclick="location.replace('https://www.naver.com');">네이버 이동 replace</button>
 	<br/>
 	<hr/>
+	<!-- replace메서드를 사용하여 페이지 이동 -기록에 저장하지 않음 -->
 	<button id="next">history 이동</button>
 	<script>
 		document.getElementById("next").onclick = function(){

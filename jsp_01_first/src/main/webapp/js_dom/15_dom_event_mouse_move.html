@@ -10,6 +10,7 @@
 	window.onload = function(){
 		
 		console.log("window.onload");
+		// div 요소에 마우스 이동 이벤트를 추가
 		window.document.querySelector("div").onmousemove = function(event){
 			let x = event.pageX; // 전체 페이지 에서 x좌표
 			let y = event.pageY; // 전체 페이지 에서 y좌표
@@ -17,8 +18,9 @@
 			// event 발생한태그 요소 기준 좌표
 			let offsetX = event.offsetX;
 			let offsetY = event.offsetY;
-			
+			// 화면에 출력할 좌표정보
 			let position = `x : ${x} , y : ${y} , offset x : ${offsetX}, offset y : ${offsetY}`;
+			// p태그의 내용을 좌표 정보로 업데이트
 			document.querySelector("#pTag").innerHTML = position;
 		};
 		
@@ -28,9 +30,12 @@
 
 </head>
 <body>
+	<!-- 마우스 위치 좌표를 출력할 p태그 -->
 	<p id="pTag"></p>
+	<!-- 마우스 이벤트를 발생시킬 div요소 -->
 	<div style="background-color:yellow;width:300px;height:100px;"></div>
 	<script>
+		//페이지 로드 후 console에 메시지 출력
 		console.log("문서 출력 완료");
 	</script>
 </body>

@@ -16,9 +16,10 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// GET 방식으로 요청이 왔을때 호출
 		System.out.println("doGet 요청 처리!");
+		// 요청파라미터에서 uid와 upw값을 가져옵니다.
 		String uid = req.getParameter("uid");
 		String upw = req.getParameter("upw");
-		
+		// 클라이언트로부터 받은 데이터를 출력할 printWriter객체를 생성합니다.ㄴ
 		PrintWriter out = resp.getWriter();
 		out.println("<h1>uid : " + uid +"<h1>");
 		out.println("<h1>upw : " + upw +"<h1>");

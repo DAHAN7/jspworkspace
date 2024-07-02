@@ -14,6 +14,7 @@
 		window.setInterval(실행할 함수, 시간간격);
 	*/
 	function changeColor(){
+		//페이지 로드시 호출되며,0.5초 간격으로 실행되는 setInterval함수
 		interval = window.setInterval(function(){
 			
 			let elem = document.querySelector("#target");
@@ -25,7 +26,7 @@
 		} ,500);
 	} // end changeColor
 	
-	// 동작 중인 interval 제거
+	// 동작 중인 interval을 clearInterval을 통해 멈추는 함수
 	function stopText(){
 		window.clearInterval(interval);
 	}
