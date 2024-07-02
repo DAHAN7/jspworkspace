@@ -35,7 +35,7 @@
 		// 일치하는 사용자 정보가 존재하지않음 - 로그인 실패
 		out.println("<script>");
 		out.println("alert('로그인 실패');");
-		out.println("history.go(-1);");// 이전 페이지로 이동
+		out.println("history.go(-1);");  // 이전 페이지로 이동
 		out.println("</script>");
 	}else{
 		// 일치하는 사용자 정보가 존재 - 로그인 성공
