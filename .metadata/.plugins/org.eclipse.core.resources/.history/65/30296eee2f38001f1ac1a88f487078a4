@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test.html</title>
+</head>
+<body>
+	<!--div#division.box{$$}*5  -->
+	<div id="division" class="box">01</div>
+	<div id="division" class="box">02</div>
+	<div id="division" class="box">03</div>
+	<div id="division" class="box">04</div>
+	<div id="division" class="box">05</div>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat eum exercitationem voluptatibus placeat facilis necessitatibus tempore quis? Explicabo nihil consequatur unde ad quo amet eveniet atque vero autem nesciunt incidunt?</p>
+</body>
+</html>

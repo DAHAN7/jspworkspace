@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!-- header.jsp -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Scope Project</title>
+</head>
+<body>
+	<header>
+		<a href="">MAIN PAGE</a> |
+		<a href="">JOIN PAGE</a> |
+		<a href="">LOGIN PAGE</a> 
+		<hr/>
+	</header>
+
+	
+	

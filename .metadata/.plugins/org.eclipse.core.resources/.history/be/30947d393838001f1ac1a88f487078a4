@@ -1,0 +1,18 @@
+package vo;
+
+public class MemberVO {
+	
+	private String uid;
+	private String upw;
+	private String uname;
+	
+	public MemberVO() {}
+
+	public MemberVO(String uid, String upw, String uname) {
+		super();
+		this.uid = uid;
+		this.upw = upw;
+		this.uname = uname;
+	}
+
+}

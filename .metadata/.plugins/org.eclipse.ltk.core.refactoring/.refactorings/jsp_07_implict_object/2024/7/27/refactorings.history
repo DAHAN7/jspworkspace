@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;jsp_07_implict_object/src/main/webapp/request/requestRest.jsp&apos; to &apos;requestResult.jsp&apos;" description="Rename resource &apos;requestRest.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/request/requestRest.jsp" name="requestResult.jsp" stamp="1719802051360" updateReferences="true"/>
+</session>

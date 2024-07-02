@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 
+		encType - POST 로 전송되는 데이터의 인코딩 설정
+		enctype="application/x-www-form-urlencoded" 
+	
+	 -->
+	<form enctype="application/x-www-form-urlencoded" 
+	action="requestResult.jsp" method="POST">
+		이름 : <input type="text" name="name" /> <br/>
+		성별 : <input type="radio" name="gender" value="male"/> 남 
+			  <input type="radio" name="gender" value="female" checked/> 여 <br/>
+		취미 : <input type="checkbox" name="hobbies" value="축구"/> 축구
+			  <input type="checkbox" name="hobbies" value="database"/> database
+			  <input type="checkbox" name="hobbies" value="자바"/> 자바
+			  <input type="checkbox" name="hobbies" value="여행"/> 여행 <br/>
+	  		  <input type="submit" />
+	</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

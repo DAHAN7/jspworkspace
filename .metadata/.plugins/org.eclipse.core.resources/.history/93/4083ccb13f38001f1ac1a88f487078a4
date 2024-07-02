@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.*, vo.MemberVO" %>
+<!-- loginCheck.jsp -->
+<%
+	String uid = request.getParameter("uid");
+	String upw = request.getParameter("upw");
+	
+	String rememberMe = request.getParameter("rememberMe");
+	
+	List<MemberVO> memberList = (List<MemberVO>) application.getAttribute("memberList");
+
+%>

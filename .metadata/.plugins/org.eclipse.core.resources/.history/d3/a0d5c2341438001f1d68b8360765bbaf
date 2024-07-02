@@ -1,0 +1,37 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>checkSession.jsp</title>
+</head>
+<body>
+	<%@ include file="check.jsp" %>
+	<h1>Session Check</h1>
+	
+	<%
+		// tomcat server  설정 기본 session 유지 시간 : 1800 - 30분
+	
+		// 해당 session 객체의 최대 유지 시간 - 초단위
+		int max = session.getMaxInactiveInterval();
+		out.println("max inactive : " + max + "<br/>");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(
+			"yyyy-MM-dd HH:mm:ss"
+		);
+		
+		// session 객체 가 생성된 시간을 millis로 반환
+		long create = session.getCreationTime();
+		String time = sdf.format(create);
+		out.println("현재 session 생성 시간 : " + time + "<br/>");
+		
+		// 현재 session으로 들어온 클라이언트의 마지막 요청 시간 - millis 
+		long last = session.getLastAccessedTime();
+		time = sdf.format(last);
+		out.println("현재 session 마지막 요청 시간 : " + time + "<br/>");
+		
+		
+	%>
+</body>
+</html>

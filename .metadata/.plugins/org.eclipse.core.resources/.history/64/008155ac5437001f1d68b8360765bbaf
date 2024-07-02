@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>request/requestResult.jsp</title>
+</head>
+<body>
+	<!-- 스크립틀릿 태그 -->
+	<%
+	// 요청 시 호출 되는 _jspService method내부에 작성
+	// request 로 전달된 data(parameter)를 처리할 문자셋 정보 확인
+	String encoding = request.getCharacterEncoding();
+	// 응답 객체를 통해서 출력 할 스트림 정보를 저장할 내장 객체
+	out.println("encoding :"+encoding +"<br/>");
+	%>
+</body>
+</html>

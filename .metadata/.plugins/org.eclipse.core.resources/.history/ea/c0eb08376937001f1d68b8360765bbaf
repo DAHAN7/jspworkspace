@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>attrTest2.jsp</title>
+</head>
+<body>
+	<%
+		String email =request.getParameter("email");
+		String id = request.getParameter("id");
+	%>
+</body>
+</html>

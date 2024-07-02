@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.*, vo.MemberVO" %>
+<!-- joinSubmit.jsp -->
+<!-- 
+	join parameter
+	회원가입을 요청한 1명의 사용자 정보 
+	uid | upw | uname 
+-->
+<%
+
+	String uid = request.getParameter("uid");
+	String upw = request.getParameter("upw");
+	String uname = request.getParameter("uname");
+	
+	// 회원 가입 요청한 멤버 정보를 application 영역 객체에 저장
+	List<MemberVO> memberList = (List<MemberVO>)application.getAttribute("memberList");
+	
+	// 아직 등록된 회원 목록 리스트가 없음
+	if(memberList == null){
+		memberList = new ArrayList<>();
+	}
+	
+	MemberVO member = new MemberVO(uid, upw, uname);
+	memberList.add(member);
+	
+	application.setAttribute("memberList", memberList);
+	
+	/* 
+	application.setAttribute("uid", uid);
+	application.setAttribute("upw", upw);
+	application.setAttribute("uname", uname);
+	 */
+%>
+
+
+
+
+
+
+
+
+
+
+
+
+
