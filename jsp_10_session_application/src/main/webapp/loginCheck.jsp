@@ -40,8 +40,29 @@
 	}else{
 		// 일치하는 사용자 정보가 존재 - 로그인 성공
 		session.setAttribute("loginMember",loginMember);
+		
+		// 자동로그인 - 로그인 정보 저장 요청 처리
+		if(rememberMe != null){ // 자동로그인 체크박스 체크
+			
+			byte[] bytes = uid.getBytes(); // 문자열을 byte[] 로 반환
+			// byte[]로 변환된 문자열을  64바이트의 새로운 방식의 byte[]로 반환
+			byte[] encodedUid = java.util.Base64.getEncoder().encode(bytes);
+			System.out.println("uid : " + uid);
+			// byte[] 에 저장된 data를 이용하여 문자열 생성
+			uid = new String(encodedUid);
+			System.out.println("encodedUid : " + uid);
+			
+			// 인증 완료된 사용자의 uid 값을 사용자 PC 브라우저 Cookie로 저장
+			Cookie cookie = new Cookie("uid", uid);
+			cookie.setMaxAge(60*60*24*15); // 초단위 seconds
+			cookie.setPath("/");
+			response.addCookie(cookie);
+		}
+		
 		// welcome page로 이동
-		response.sendRedirect(request.getContextPath());
+		// /jsp_10_session_application/
+		// response.sendRedirect(request.getContextPath());
+		response.sendRedirect("/jsp_10_session_application/");
 	}
 	
 	

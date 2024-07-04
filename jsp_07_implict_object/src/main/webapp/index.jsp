@@ -9,7 +9,7 @@
 	<!-- 링크를 포함하는 제목  -->
 	<h3>
 	<!-- "requestTest.jsp페이지로 이동하는 링크 -->
-		<a href="request/requestTest.jsp">request method 확인</a>
+		<a href="request/requestTest.jsp">request method 확인</a>s
 	</h3>
 	<!-- 
 		속성-영역 객체
