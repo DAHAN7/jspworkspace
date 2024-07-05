@@ -16,4 +16,22 @@ CREATE TABLE IF NOT EXISTS member(
 
 
 
+SELECT * FROM digital_jsp.member;
+SELECT * FROM member;
 
+-- table 에 값 삽입,INSERT INTO table VALUES(값...);
+-- num, id, pass, name, addr
+INSERT INTO member VALUES(null,'id001','pw001','김동하','개성');
+INSERT INTO member(id,pass,name,addr)
+VALUES('id002','pw002','IRON MAN','NEW YORK');
+
+commit;
+
+SELECT * FROM member ORDER BY num DESC;
+SELECT num,id,name,addr FROM member ORDER BY num DESC;
+DELETE FROM member WHERE id= 'id001';
+
+DELETE FROM member WHERE num =5;
+rollback;
+SELECT @@autocommit;
+SET AUTOCOMMIT = TRUE;
