@@ -6,6 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 목록</title>
+<style>
+		table tr td{
+		padding :5px 10px
+		}
+		table tr:nth-child(n+2):hover{
+		cursor:pointer;
+		background-color:gold;
+		color:white;
+		}
+</style>
 </head>
 <body>
 	<%
@@ -36,7 +46,7 @@
 			String addr = rs.getString("addr");		// 4
 	%>
 		<!-- 한 회원의 정보를 table tag의 tr로 출력 -->	
-		<tr>
+		<tr onclick="location.href='updateForm.jsp?num=<%=num%>';">
 			<td><%=num%></td>
 			<td><%=id%></td>
 			<td><%=name%></td>
@@ -44,7 +54,7 @@
 			<td>
 				<!-- 회원 삭제 -->
 				<form action="deleteExecute.jsp" method="POST">
-					<input type="text" name="num" value="<%=num%>"/> 
+					<input type="hidden" name="num" value="<%=num%>"/> 
 					<button>삭제</button>
 				</form>
 			</td>	
@@ -62,3 +72,14 @@
 	<a href="index.jsp">메인으로</a>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
