@@ -1,4 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<!-- second.jsp -->
-<!-- incluede file의 절대경로는 webapp -->
-<%@ include file="/common/header.jsp" %>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="jsp_03_servlet_life_cycle">
-        <property name="context-root" value="jsp_03_servlet_life_cycle"/>
-        <property name="java-output-path" value="/jsp_03_servlet_life_cycle/build/classes"/>
-    </wb-module>
-</project-modules>
