@@ -63,7 +63,7 @@
 					메세지 번호 : <%=num%> <br/>
 					손님 이름 : <%=guestName %> <br/>
 					메세지 : <%=message %> 
-					<a href="">[삭제]</a>
+					<a href="guest_book_confirm.jsp?num=<%=num%>">[삭제]</a>
 				</td>				
 			</tr>
 		<%
@@ -80,6 +80,18 @@
 	</table>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

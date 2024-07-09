@@ -15,5 +15,8 @@ CREATE TABLE IF NOT EXISTS guestBook(
 -- 실행 할 쿼리 블럭 지정후   alt + x, alt + c
 DESCRIBE guestBook;
 
-
 SELECT * FROM guestBook;
+-- sample data 추가
+INSERT INTO guestBook(guestName, password, message)
+SELECT guestName,password,message FROM guestBook;
+
