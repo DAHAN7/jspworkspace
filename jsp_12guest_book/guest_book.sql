@@ -20,3 +20,4 @@ SELECT * FROM guestBook;
 INSERT INTO guestBook(guestName, password, message)
 SELECT guestName,password,message FROM guestBook;
 
+SELECT count(num)FROM guestBook;

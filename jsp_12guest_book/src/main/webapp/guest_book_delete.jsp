@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" %> <%-- JSP 페이지 설정 (언어, 콘텐츠 타입, 문자 인코딩) --%>
 <!-- guest_book_delete.jsp -->
 <!DOCTYPE html>
 <html>
@@ -7,8 +7,9 @@
 <title>방명록 메세지 삭제 요청 처리</title>
 </head>
 <body>
-	<%@ page import="java.sql.*, utils.JDBCUtil" %>
+	<%@ page import="java.sql.*, utils.JDBCUtil" %><%-- JDBC 및 유틸리티 클래스 import --%>
 	<%
+	// 1. 삭제할 메시지 번호와 비밀번호 파라미터 받기
 		String paramNum = request.getParameter("num");
 		String password = request.getParameter("password");
 		
