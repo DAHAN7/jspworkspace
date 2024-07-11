@@ -1,37 +1,90 @@
+<%@ page import="test.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<!-- index.jsp -->
+<%
+	String includePage = request.getParameter("page");
+	if(includePage == null){
+		includePage = "default";
+	}
+
+	// default
+	includePage = includePage + ".jsp";
+	// default.jsp
+	
+	UserVO sessionUser = (UserVO)session.getAttribute("user");
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Index jsp</title>
+<title>Action Tag include</title>
+<style type="text/css">
+	table{
+		width:900px;
+		margin:0 auto;
+		text-align:center;
+		border:1px solid black;
+	}
+	
+	table tr td:first-child{
+		border-right:1px solid gray;	
+	}
+	
+	aside ul{
+		list-style:none;
+		padding-left:10px;
+		text-align:left;
+		width:130px;
+		height:500px;
+	}
+	
+	aside ul li a{
+		text-decoration:none;
+		color:gray;
+	}
+	
+	aside ul li a:hover{
+		color:red;
+	}
+</style>
 </head>
 <body>
-	<!-- 링크를 포함하는 제목  -->
-	<h3>
-	<!-- "requestTest.jsp페이지로 이동하는 링크 -->
-		<a href="request/requestTest.jsp">request method 확인</a>s
-	</h3>
-	<!-- 
-		속성-영역 객체
-		pageContext		< 		request		<		session		< 		application
-		하나의 jsp page	하나의 요청에 대한 응답이	  브라우저가 종료 될때 까지		서버가 종료될 때 까지
-						완료 될때까지 유지 
-	 -->
-	<h3>
-		<!-- "attrForm.jsp"페이지로 이동하는 링크 -->
-		<a href="attrForm.jsp">속성-영역 객체 테스트</a>
-	</h3>
-	<!-- pageContext영역에 저장된 "pageId"속성값을 출력 -->
-	<h4>pageContext id : <%= pageContext.getAttribute("pageId") %></h4>
-	<!-- request영역에 저장된 "requestEmail"속성값을 출력 -->
-	<h4>request email : <%= request.getAttribute("requestEmail") %></h4>
-	<!-- session영역에 저장된 "sessionEmail"속성값을 출력 -->
-	<h4>session email : <%= session.getAttribute("sessionEmail") %></h4>
-	<!-- applicaiton 영역에 저장된 "appId"속성값을 출력 -->
-	<h4>application id : <%= application.getAttribute("appId") %></h4>
+	<table>
+		<tr>
+			<th colspan="2" height="150"> 
+				<h1>HEADER - <%=sessionUser%></h1>
+				<hr/>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<aside>
+					<ul>
+						<li><a href="index.jsp?page=default">HOME</a></li>
+						<li><a href="index.jsp?page=intro">회사소개</a></li>
+						<li><a href="index.jsp?page=useBean">USE Bean</a></li>
+						<li><a href="index.jsp?page=join">회원가입</a></li>
+						<li><a href="index.jsp?page=element">동적요소</a></li>
+					</ul>
+				</aside>
+			</td>
+			<td width="790">
+				<!-- content -->
+				<jsp:include page="<%=includePage%>"/>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="2" height="150"> 
+				<hr/>
+				<center>
+					Copyright &copy; 2024.
+				</center>
+			</th>
+		</tr>
+	</table>
 </body>
 </html>
-
 
 
 
