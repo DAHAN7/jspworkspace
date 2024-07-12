@@ -27,6 +27,8 @@ C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.ecl
 \jsp_06_include\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1270762416.index
 \jsp_08_session_cookie\src\main\java
+C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2080347265.index
+\jsp_15_EL_JSTL\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2143940353.index
 \jsp_12guest_book\src\main\java
 C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\943110664.index
