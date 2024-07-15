@@ -1,7 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<!-- loginCheck.jsp -->
-<%
-	String uid = request.getParameter("uid");
-	String upw = request.getParameter("upw");
-	String rememberMe = request.getParameter("rememberMe");
-%>

@@ -63,6 +63,7 @@
 		${name} &nbsp;
 	</c:forTokens>
 	
+	<%-- <% response.sendRedirect("index.jsp"); %> --%>
 	<c:redirect url="index.jsp"/>
 </body>
 </html>

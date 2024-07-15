@@ -1,9 +1,0 @@
-package vo;
-
-public class MemberVO {
-	
-	private String uid;
-	private String upw;
-	private String uname;
-
-}

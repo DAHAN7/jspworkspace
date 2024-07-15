@@ -1,7 +1,0 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
-<!-- joinSubmit.jsp -->
-<!-- 
-	join parameter
-	회원가입ㅇ르 요청한 1명의 사용자 정보
-	uid | upw | uname 
--->

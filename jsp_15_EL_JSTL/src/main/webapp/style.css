@@ -1,0 +1,461 @@
+/* 전체 스타일 초기화 */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: burlywood;
+  color: #333;
+}
+/* 컨테이너 스타일 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 헤더 스타일 */
+header {
+  background-image: url("images/header-background.jpg"); /* 이미지 경로 확인 */
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+  color: black;
+  padding: 10px 0;
+  text-align: center; /* 로고, 검색창 가운데 정렬 */
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  justify-content: center; /* 검색창 가운데 정렬 */
+  margin-bottom: 20px; /* 검색창 아래 간격 */
+  padding: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-button {
+  padding: 8px 12px;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #004b9a;
+}
+
+.header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.slogan {
+  font-size: 1.5rem;
+  color: wheat;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* 메뉴 스타일 */
+.menu {
+  display: flex;
+  justify-content: center;
+}
+
+.menu li {
+  margin: 0 15px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+}
+
+/* 카테고리 스타일 */
+.category {
+  /* display: flex; */
+  flex-wrap: wrap; /* 카테고리 개수에 따라 줄바꿈 */
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  /* justify-content: space-around; 간격 균등 분배 */
+}
+
+.category h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.category-item {
+  width: calc(25% - 20px); /* 4개씩 한 줄에 표시, 간격 조절 */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.category-item a {
+  text-decoration: none;
+  color: #333; /* 어두운 회색 */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* 현재 선택된 메인 카테고리 강조 스타일 */
+.category-item,.active a {
+  color: #ff69b4; /* 분홍색 */
+  border-bottom: 2px solid #ff69b4; /* 분홍색 밑줄 */
+}
+
+.category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-title {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  transition: transform 0.3s ease;
+}
+
+.arrow.down {
+  transform: rotate(0deg);
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+}
+
+/* 서브 카테고리 스타일 */
+.subcategory {
+  list-style: none;
+  border-radius: 5px; /* 둥근 모서리 추가 */
+  padding: 10px 0;
+  margin: 0;
+  display: none; /* 기본적으로 숨김 */
+  position: absolute; /* 메인 메뉴에 상대적인 위치 */
+  top: 100%; /* 메인 메뉴 바로 아래에 배치 */
+  left: 0;
+  z-index: 10;
+  background-color: white; /* 흰색 배경 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 그림자 */
+  z-index: 10; /* 다른 요소 위에 표시 */
+}
+.category-item:hover .subcategory {
+  display: block; /* 메인 메뉴에 hover 시 서브 메뉴 표시 */
+}
+.subcategory-list {
+  display: none;
+  padding-left: 20px;
+  position:absolute;
+  background-color:rgba(255,255,255,0.8);
+  width:100%;
+}
+.subcategory-list li {
+  margin-bottom: 5px; /* 서브 카테고리 간격 */
+}
+
+.subcategory-list.active {
+  display: block;
+}
+.subcategory-item a {
+  text-decoration: none;
+  color: #555; /* 더 연한 회색 */
+  display: block;
+  padding: 8px 15px;
+}
+
+
+
+.subcategory-item a:hover {
+  background-color: #f5f5f5; /* hover 시 배경색 */
+}
+
+/* 중고 도서 판매 섹션 스타일 */
+.used-book-upload {
+  background-color: black;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.used-book-upload h2 {
+  margin-top: 0;
+}
+
+.upload_desc p {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  margin-bottom: 15px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row textarea,
+.form-row select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+/* 책 정보 스타일 */
+.book-info {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.book-image {
+  margin-right: 20px;
+}
+
+.book-image img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* 판매 정보 스타일 */
+.selling-info {
+  text-align: center;
+}
+
+.selling-options {
+  display: flex;
+  justify-content: center;
+}
+
+.selling-option {
+  margin: 0 15px;
+}
+
+.selling-option img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* 인기 중고도서 상품 스타일 */
+.book-item {
+  border: 1px solid #ddd; /* 테두리 추가 */
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: box-shadow 0.3s ease; /* 호버 효과를 위한 transition 추가 */
+}
+
+.book-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* 추천 헌책방 스타일 */
+.store-section {
+  background-color: wheat;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.store-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.store-item {
+  border: 1px solid #ddd; /* 테두리 추가 */
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: box-shadow 0.3s ease; /* 호버 효과를 위한 transition 추가 */
+}
+
+.store-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* 스페셜 섹션 스타일 */
+.special-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.special-item {
+  text-align: center;
+  width: 30%;
+  padding: 20px;
+  border: 1px solid red;
+  border-radius: 8px;
+}
+
+.special-item img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+/* 푸터 스타일 */
+footer {
+  background-color: #333; /* 배경색 변경 (어두운 회색) */
+  color: white;
+  padding: 30px 0;
+  text-align: center; /* 푸터 내용 가운데 정렬 */
+  color: white;
+  padding: 40px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* 텍스트 그림자 */
+  font-family: "Gowun Dodum", sans-serif; /* 폰트 변경 */
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* 그리드 레이아웃 */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 정보 영역 */
+.footer-info {
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+}
+
+.footer-logo {
+  margin-bottom: 10px;
+}
+
+.footer-logo img {
+  max-width: 150px; /* 로고 크기 조절 */
+  height: auto;
+}
+
+.footer-contact {
+  font-size: 0.9rem; /* 연락처 폰트 크기 조절 */
+}
+
+/* 링크 영역 */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.footer-links a:hover {
+  text-decoration: underline; /* 링크에 hover 효과 추가 */
+}
+
+/* 소셜 영역 */
+.footer-social {
+  display: flex;
+  align-items: center;
+}
+
+.footer-social a {
+  display: inline-block;
+  margin-right: 15px; /* 아이콘 간 간격 */
+}
+
+.footer-social img {
+  width: 30px;
+  height: auto;
+  filter: invert(1); /* 아이콘 색상 반전 */
+}
+
+div.category{
+  position:absolute;
+  left:50px;
+}
+
+@media screen and (max-width:1600px){
+    div.category{
+      position:static;
+    }
+}
+    
