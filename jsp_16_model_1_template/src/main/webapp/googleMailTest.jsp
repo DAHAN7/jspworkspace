@@ -35,7 +35,7 @@
  		msg.setHeader("Content-Type","text/html;charset=utf-8");
  		
  		// 수신자 지정
- 		InternetAddress to = new InternetAddress("ekgks4843@gamil.com");
+ 		InternetAddress to = new InternetAddress("ekgks4843@gmail.com");
  		// Message.RecipientType.TO : 받는 사람
  		// Message.RecipientType.CC : 참조
  		// Message.RecipientType.BCC : 숨은 참조

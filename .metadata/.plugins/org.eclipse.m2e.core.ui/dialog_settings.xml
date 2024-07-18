@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\admin\Desktop\group_project\semi\group_project"/>
 			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\Servers\Tomcat v10.1 Server at localhost-config"/>
 		</list>
 		<list key="projectNameTemplate">
@@ -14,6 +15,7 @@
 		</list>
 	</section>
 	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="All Catalogs"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -56,6 +58,19 @@
 			<item value="[groupId].[artifactId]"/>
 			<item value="[groupId].[artifactId]-[version]"/>
 			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="group_project"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="group_project"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

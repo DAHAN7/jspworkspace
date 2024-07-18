@@ -21,13 +21,14 @@
 				<li><a href="<c:url value='/'/>">home</a></li>
 				<li><a href="<c:url value='/member/login.jsp'/>">로그인</a></li>
 				<li><a href="<c:url value='/member/join.jsp'/>">회원가입</a></li>
-				<li><a href="googleMailTest.jsp">구글메일테스트</a></li>
+				<li><a href="${path}/googleMailTest.jsp">구글메일테스트</a></li>
 			</ul>
 		</div>
 		<div>
 			<ul>
 				<li><a href="${context}/board/notice/notice_list.jsp">공지사항</a></li>
 				<li><a href="${context}/board/qna/qna_list.jsp">질문과답변</a></li>
+				<li><a href="${path}/javascript_ajax.jsp">AJAX</a></li>
 			</ul>
 		</div>
 	</header>

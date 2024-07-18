@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="application/json; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
+<%-- 
 <!-- checkId.jsp -->
 <!-- ID 중복 체크 -->
+ --%>
 <c:catch var="e">
 	<s:setDataSource var="conn"
 					 driver="com.mysql.cj.jdbc.Driver" 
@@ -17,19 +19,39 @@
 	
 	<c:choose>
 		<c:when test="${rs.rowCount > 0}">
-			<!-- 동일한 아이디 존재 -->
-			<script>
-				alert('이미 사용중인 아이디입니다.');
-			</script>
+			<%-- <!-- 동일한 아이디 존재 --> --%>
+			<c:out value="false"/>
 		</c:when>
 		<c:otherwise>
-			<!-- 동일한 아이디 존재하지 않음 -->
-			<script>
-				alert('사용 가능한 아이디입니다.');
-			</script>
+			<%-- <!-- 동일한 아이디 존재하지 않음 --> --%>
+			<c:out value="true"/>
 		</c:otherwise>
 	</c:choose>
-	<script>
-		history.go(-1);
-	</script>
 </c:catch>
+<c:if test="${!empty e}">
+	<c:out value="false"/>	
+</c:if>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
