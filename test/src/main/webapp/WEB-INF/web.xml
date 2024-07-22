@@ -3,7 +3,7 @@
   <display-name>test</display-name>
   
     <welcome-file-list>
-		 <welcome-file>/used/usedbooklist/usedBooksdetail.jsp</welcome-file>
+		 <welcome-file>/used/usedBooksdetail.jsp</welcome-file>
 	</welcome-file-list>
 	
   <servlet>

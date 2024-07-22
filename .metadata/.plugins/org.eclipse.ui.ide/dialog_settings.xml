@@ -41,6 +41,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\server_program_test"/>
+			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\server_program_test1"/>
+			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\server_program_answer"/>
 			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_16_model_1_template"/>
 			<item value="C:\Users\admin\Desktop\group_project\main"/>
 		</list>

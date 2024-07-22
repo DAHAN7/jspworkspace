@@ -17,8 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UsedBookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // 데이터베이스 연결 정보
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/digital_jsp";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/baskin";
     private static final String JDBC_USER = "digital";
     private static final String JDBC_PASSWORD = "1234";
 
@@ -26,11 +25,9 @@ public class UsedBookServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        // 카테고리 및 도서 정보를 저장할 변수
         StringBuilder categoriesHtml = new StringBuilder();
 
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-            // 카테고리 목록 쿼리
             String categorySQL = "SELECT DISTINCT category FROM Books";
             try (PreparedStatement pstmt = conn.prepareStatement(categorySQL);
                  ResultSet rs = pstmt.executeQuery()) {
@@ -47,7 +44,6 @@ public class UsedBookServlet extends HttpServlet {
                         .append(category)
                         .append("\" class=\"subcategory-list\">");
 
-                    // 서브카테고리(중고 도서) 목록 쿼리
                     String usedBooksSQL = "SELECT * FROM Used_Books INNER JOIN Books ON Used_Books.book_id = Books.book_id WHERE Books.category = ?";
                     try (PreparedStatement pstmt2 = conn.prepareStatement(usedBooksSQL)) {
                         pstmt2.setString(1, category);
@@ -84,7 +80,6 @@ public class UsedBookServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        // HTML 응답 생성
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html lang=\"en\">");
@@ -142,10 +137,10 @@ public class UsedBookServlet extends HttpServlet {
             out.println("<div class=\"form-row\">");
             out.println("<label for=\"book-condition\">도서 상태:</label>");
             out.println("<select id=\"book-condition\" name=\"book-condition\">");
-            out.println("<option value=\"best\">최상</option>");
-            out.println("<option value=\"good\">상</option>");
-            out.println("<option value=\"fair\">중</option>");
-            out.println("<option value=\"poor\">하</option>");
+            out.println("<option value=\"최상\">최상</option>");
+            out.println("<option value=\"상\">상</option>");
+            out.println("<option value=\"중\">중</option>");
+            out.println("<option value=\"하\">하</option>");
             out.println("</select>");
             out.println("</div>");
             out.println("<div class=\"form-row\">");
@@ -198,74 +193,33 @@ public class UsedBookServlet extends HttpServlet {
             out.println("<img src=\"book4.jpg\" alt=\"Book 4\">");
             out.println("<h3>Book 4 Title</h3>");
             out.println("<p>Author: 최기근</p>");
-            out.println("<p>Price: $85.00</p>");
+            out.println("<p>Price: $33.00</p>");
             out.println("</article>");
-            out.println("</section>");
-            out.println("<section class=\"store-section\">");
-            out.println("<h2>추천 헌책방</h2>");
-            out.println("<div class=\"store-list\">");
-            out.println("<article class=\"store-item\">");
-            out.println("<h3>베스킨 헌책방</h3>");
-            out.println("<img src=\"store1.jpg\" alt=\"베스킨 헌책방\">");
-            out.println("<p>30,000원 이상 무료배송</p>");
-            out.println("<p>판매자: 최기근</p>");
-            out.println("</article>");
-            out.println("<article class=\"store-item\">");
-            out.println("<h3>JSP</h3>");
-            out.println("<img src=\"store2.jpg\" alt=\"JSP\">");
-            out.println("<p>100,000원 이상 무료배송</p>");
-            out.println("<p>판매자: 최기근</p>");
-            out.println("</article>");
-            out.println("<article class=\"store-item\">");
-            out.println("<h3>HTML</h3>");
-            out.println("<img src=\"store3.jpg\" alt=\"HTML\">");
-            out.println("<p>25,000원 이상 무료배송</p>");
-            out.println("<p>판매자: 최기근</p>");
-            out.println("</article>");
-            out.println("<article class=\"store-item\">");
-            out.println("<h3>스프링</h3>");
-            out.println("<img src=\"store4.jpg\" alt=\"스프링\">");
-            out.println("<p>70,000원 이상 무료배송</p>");
-            out.println("<p>판매자: 최기근</p>");
-            out.println("</article>");
-            out.println("<article class=\"store-item\">");
-            out.println("<h3>CSS</h3>");
-            out.println("<img src=\"store5.jpg\" alt=\"CSS\">");
-            out.println("<p>30,000원 이상 무료배송</p>");
-            out.println("<p>판매자: 최기근</p>");
-            out.println("</article>");
-            out.println("</div>");
-            out.println("</section>");
-            out.println("<section class=\"special-section\">");
-            out.println("<article class=\"special-item\">");
-            out.println("<h2>부산IT 직배송 중고</h2>");
-            out.println("<p>싸고 믿을 수 있고 총알배송까지!<br>부산IT 직배송 중고도서 둘러보세요!</p>");
-            out.println("<img src=\"book1.jpg\" alt=\"부트스트랩\">");
-            out.println("<p>부트스트랩</p>");
-            out.println("<p>15000원</p>");
-            out.println("<p>새상품 대비 33% 할인</p>");
-            out.println("</article>");
-            out.println("<article class=\"special-item\">");
-            out.println("<h2>소장용 상품</h2>");
-            out.println("<p>소장가치가 높은 특별한 중고상품을<br>만나보세요!</p>");
-            out.println("<img src=\"book2.jpg\" alt=\"파이썬\">");
-            out.println("<p>파이썬</p>");
-            out.println("<p>제어문 컬렉션</p>");
-            out.println("<p>45,000원</p>");
-            out.println("</article>");
-            out.println("<article class=\"special-item\">");
-            out.println("<h2>중고상품 판매요청</h2>");
-            out.println("<p>찾는 상품이 중고샵에 없나요?<br>원하는 중고상품을 요청해주세요!</p>");
-            out.println("<img src=\"book3.jpg\" alt=\"홈(1Disc)\">");
-            out.println("<p>홈(1Disc)</p>");
-            out.println("<p>요청건수: 99건</p>");
+            out.println("<article class=\"book-item\">");
+            out.println("<img src=\"book5.jpg\" alt=\"Book 5\">");
+            out.println("<h3>Book 5 Title</h3>");
+            out.println("<p>Author: 최기근</p>");
+            out.println("<p>Price: $40.00</p>");
             out.println("</article>");
             out.println("</section>");
             out.println("</div>");
             out.println("</main>");
-            out.println("<script src=\"/test/used/script.js\"></script>");
+            out.println("<footer class=\"footer\">");
+            out.println("<div class=\"footer-info\">");
+            out.println("<h4>회사 정보</h4>");
+            out.println("<p>중고도서, 도서관, 주식회사 중고도서</p>");
+            out.println("<p>대표자: 최기근</p>");
+            out.println("<p>사업자등록번호: 123-45-67890</p>");
+            out.println("</div>");
+            out.println("</footer>");
+            out.println("<script src=\"/test/used/scripts.js\"></script>");
             out.println("</body>");
             out.println("</html>");
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 여기에 도서 판매 등록 로직을 추가할 수 있습니다.
     }
 }

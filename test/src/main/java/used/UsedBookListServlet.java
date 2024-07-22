@@ -18,7 +18,7 @@ public class UsedBookListServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // 데이터베이스 연결 정보
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/digital_jsp";
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/baskin";
     private static final String JDBC_USER = "digital";
     private static final String JDBC_PASSWORD = "1234";
 
