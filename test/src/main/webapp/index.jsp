@@ -9,11 +9,11 @@
 <title>중고서적 </title>
 </head>
 <body>
-	<!-- redirect로 /used/used_books.html 페이지 이동 -->
-	<c:redirect url="/used/used_books.html"/>
+	<!-- redirect로 /used/used_books.jsp 페이지 이동 -->
+	<c:redirect url="/used/used_books.jsp"/>
 	<%-- 
 	<%
-		response.sendRedirect("/used/used_books.html");
+		response.sendRedirect("/used/used_books.jsp");
 	%>
 	 --%>
 </body>

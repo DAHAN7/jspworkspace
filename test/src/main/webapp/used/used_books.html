@@ -112,13 +112,13 @@
 
             <section class="popular-books">
                 <h2>인기 중고도서 상품</h2>
-                <article class="book-item">
+                <article class="book-item" onclick="moveDetail(1);">
                     <img src="https://via.placeholder.com/150" alt="Book 1">
                     <h3>Book 1 Title</h3>
                     <p>Author: 최기근</p>
                     <p>Price: $90.00</p>
                 </article>
-                <article class="book-item">
+                <article class="book-item" onclick="moveDetail(2);">
                     <img src="https://via.placeholder.com/150" alt="Book 2">
                     <h3>Book 2 Title</h3>
                     <p>Author: 최기근</p>
@@ -204,6 +204,16 @@
     </main>
 
 <script src="/test/used/script.js"></script>
+<script>
+	function moveDetail(bookNum){
+		location.href= "usedBooksdetail.jsp?bookNum="+bookNum;	
+	}
+
+
+
+
+
+</script>
 </body>
 
 </html>

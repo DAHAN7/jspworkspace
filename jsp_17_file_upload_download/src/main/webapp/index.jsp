@@ -2,7 +2,8 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head>2
+
 <meta charset="UTF-8"> <%-- 문자셋 UTF-8 설정 --%>
 <title>File Upload Download</title> <%-- 페이지 제목 --%>
 </head>
