@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/MySQLDB"
+    <Resource name="jdbc/baskin"
               auth="Container"
-              type="javax.sql.DataSource"
-              maxTotal="100"
+              type="javax.sql.DataSource" 
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" 
+              maxActive="100"
               maxIdle="30"
-              maxWaitMillis="10000"
+              maxWait="10000"
               username="digital"
               password="1234"
               driverClassName="com.mysql.cj.jdbc.Driver"

@@ -20,22 +20,22 @@
                 <h2>카테고리</h2>
                 <ul>
                     <li class="category-item">
-                        <button class="category-title" onclick="toggleDropdown('foreign-books')">중고 외국도서
+                     <button class="category-title" data-category="foreign-books">중고 외국도서
                             <i class="arrow down"></i>
                         </button>
                         <ul id="foreign-books" class="subcategory-list">
-                            <li class="subcategory-item"><a href="#">ELT/사전</a></li>
-                            <li class="subcategory-item"><a href="#">유아/어린이</a></li>
+                          <li class="subcategory-item"><a href="usedbooklist/UsedBookList.jsp?subcategory=ELT/사전">ELT/사전</a></li>
+                            <li class="subcategory-item"><a href="usedbooklist/UsedBookList.jsp?subcategory=유아/어린이">유아/어린이</a></li>
                         </ul>
                     </li>
                     <li class="category-item">
-                        <button class="category-title" onclick="toggleDropdown('domestic-books')">중고 국내도서
+                      <button class="category-title" data-category="domestic-books">중고 국내도서
                             <i class="arrow down"></i>
                         </button>
                         <ul id="domestic-books" class="subcategory-list">
-                            <li class="subcategory-item"><a href="#">역사</a></li>
-                            <li class="subcategory-item"><a href="#">예술</a></li>
-                            <li class="subcategory-item"><a href="#">자기계발</a></li>
+	         				<li class="subcategory-item"><a href="usedbooklist/UsedBookList.jsp?subcategory=자기계발">자기계발</a></li>
+                            <li class="subcategory-item"><a href="usedbooklist/UsedBookList.jsp?subcategory=예술">예술</a></li>
+                            <li class="subcategory-item"><a href="usedbooklist/UsedBookList.jsp?subcategory=자기계발">자기계발</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -52,7 +52,7 @@
                             <button type="button" id="search-button">검색</button>
                         </div>
                     </div>
-
+</form>
                     <div id="book-info" style="display: none;">
                         <div class="book-image">
                             <img id="book-cover" src="" alt="책 표지">
@@ -94,7 +94,7 @@
                             <button type="submit" class="submit-button">판매 등록</button>
                         </div>
                     </div>
-                </form>
+                
 
                 <div class="selling-info">
                     <h3>소장하고 계신 중고 상품을 실속있게 판매해 보세요!</h3>

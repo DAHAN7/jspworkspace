@@ -2,8 +2,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // 카테고리 드롭다운 토글 기능
     document.querySelectorAll(".category-title").forEach(function(categoryTitle) {
         categoryTitle.addEventListener("click", function() {
-            const subcategoryList = document.getElementById(categoryTitle.dataset.category);
-            subcategoryList.classList.toggle("show");
+            const categoryId = categoryTitle.getAttribute("data-category");
+            const subcategoryList = document.getElementById(categoryId);
+            if (subcategoryList) {
+                subcategoryList.classList.toggle("show");
+            } else {
+                console.error(`ID가 "${categoryId}"인 요소를 찾을 수 없습니다.`);
+            }
         });
     });
 

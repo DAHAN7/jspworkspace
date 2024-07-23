@@ -226,6 +226,13 @@ header {
 	z-index: 10;
 	/* 다른 요소 위에 표시 */
 }
+.subcategory-list {
+    display: none;
+}
+
+.subcategory-list.show {
+    display: block;
+}
 
 .category-item:hover .subcategory {
 	display: block;
