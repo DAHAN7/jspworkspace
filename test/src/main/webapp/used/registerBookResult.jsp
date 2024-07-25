@@ -26,15 +26,15 @@
                         return;
                     }
 
-                    // 파라미터를 가져옵니다.
-                    String title = request.getParameter("book-title");
-                    String author = request.getParameter("book-author");
-                    String priceStr = request.getParameter("book-price");
-                    String publisher = request.getParameter("book-publisher");
-                    String description = request.getParameter("book-description");
-                    String category = request.getParameter("book-category");
-                    String stockStr = request.getParameter("book-stock");
-                    String imagePath = request.getParameter("book-image-path");
+                    // name 속성이랑 일치하게 수정 파라미터를 가져옵니다.
+                    String title = request.getParameter("title");
+                    String author = request.getParameter("author");
+                    String priceStr = request.getParameter("price");
+                    String publisher = request.getParameter("publisher");
+                    String description = request.getParameter("description");
+                    String category = request.getParameter("category");
+                    String stockStr = request.getParameter("stock");
+                    String imagePath = request.getParameter("image_path");
 
                     if (title == null || author == null || priceStr == null || publisher == null || description == null || category == null || stockStr == null || imagePath == null) {
                         out.println("<p>모든 필드를 입력해 주세요.</p>");
@@ -56,8 +56,13 @@
                     PreparedStatement pstmt = null;
 
                     try {
+                        // JDBC 드라이버를 로딩합니다 (MySQL 드라이버의 경우).
+                        // Class.forName("com.mysql.cj.jdbc.Driver"); // 필요에 따라 주석을 해제하십시오.
+
+                        // 데이터베이스 연결
                         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/baskin", "digital", "1234");
 
+                        // SQL 쿼리
                         String sql = "INSERT INTO books (title, author, price, publisher, description, category, stock, seller_id, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, '중고책')";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, title);
@@ -70,6 +75,7 @@
                         pstmt.setInt(8, memberNum); // 세션에서 가져온 memberNum 사용
                         pstmt.setString(9, imagePath);
 
+                        // SQL 실행
                         int rowsAffected = pstmt.executeUpdate();
 
                         if (rowsAffected > 0) {
@@ -79,13 +85,17 @@
                         }
                     } catch (Exception e) {
                         out.println("<p>오류 발생: " + e.getMessage() + "</p>");
-                        e.printStackTrace();
                     } finally {
-                        if (pstmt != null) try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
-                        if (conn != null) try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+                        // 자원 해제
+                        if (pstmt != null) {
+                            try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); }
+                        }
+                        if (conn != null) {
+                            try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+                        }
                     }
                 %>
-                <a href="insert.jsp">다시 등록하기</a>
+                <a href="registerUsedBook.jsp">다시 등록하기</a>
             </section>
         </div>
     </main>

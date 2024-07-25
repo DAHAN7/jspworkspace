@@ -1,249 +1,264 @@
 package used;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
 
-@WebServlet("/usedbooks")
-@MultipartConfig
+@WebServlet("/BookServlet")
 public class UsedBookServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/baskin";
-    private static final String JDBC_USER = "digital";
-    private static final String JDBC_PASSWORD = "1234";
-    private static final String UPLOAD_DIR = "uploads"; // 파일 업로드 디렉토리
+    private DataSource dataSource;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-        StringBuilder categoriesHtml = new StringBuilder();
-
-        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-            String categorySQL = "SELECT DISTINCT category FROM Books";
-            try (PreparedStatement pstmt = conn.prepareStatement(categorySQL);
-                 ResultSet rs = pstmt.executeQuery()) {
-
-                while (rs.next()) {
-                    String category = rs.getString("category");
-                    categoriesHtml.append("<li class=\"category-item\">")
-                        .append("<button class=\"category-title\" onclick=\"toggleDropdown('")
-                        .append(category)
-                        .append("')\">")
-                        .append(category)
-                        .append(" <i class=\"arrow down\"></i></button>")
-                        .append("<ul id=\"")
-                        .append(category)
-                        .append("\" class=\"subcategory-list\">");
-
-                    String usedBooksSQL = "SELECT B.title, B.author, B.price, B.publisher, B.description, B.category, UB.stock, UB.seller_id, B.image_path, UB.status " +
-                                          "FROM Used_Books UB INNER JOIN Books B ON UB.book_id = B.book_id WHERE B.category = ?";
-                    try (PreparedStatement pstmt2 = conn.prepareStatement(usedBooksSQL)) {
-                        pstmt2.setString(1, category);
-                        try (ResultSet usedBooksRS = pstmt2.executeQuery()) {
-                            while (usedBooksRS.next()) {
-                                String bookTitle = usedBooksRS.getString("title");
-                                String author = usedBooksRS.getString("author");
-                                int price = usedBooksRS.getInt("price");
-                                String publisher = usedBooksRS.getString("publisher");
-                                String description = usedBooksRS.getString("description");
-                                int stock = usedBooksRS.getInt("stock");
-                                String sellerId = usedBooksRS.getString("seller_id");
-                                String imagePath = usedBooksRS.getString("image_path");
-                                String status = usedBooksRS.getString("status");
-                                categoriesHtml.append("<li class=\"subcategory-item\">")
-                                    .append("<div class=\"book-info\">")
-                                    .append("<h3>")
-                                    .append(bookTitle)
-                                    .append("</h3>")
-                                    .append("<p>저자: ")
-                                    .append(author)
-                                    .append("</p>")
-                                    .append("<p>가격: ")
-                                    .append(price)
-                                    .append(" 원</p>")
-                                    .append("<p>출판사: ")
-                                    .append(publisher)
-                                    .append("</p>")
-                                    .append("<p>상태: ")
-                                    .append(status)
-                                    .append("</p>")
-                                    .append("<p>재고: ")
-                                    .append(stock)
-                                    .append("</p>")
-                                    .append("<p>설명: ")
-                                    .append(description)
-                                    .append("</p>")
-                                    .append("<p>판매자 ID: ")
-                                    .append(sellerId)
-                                    .append("</p>")
-                                    .append("<img src=\"")
-                                    .append(imagePath)
-                                    .append("\" alt=\"책 표지\">")
-                                    .append("</div>")
-                                    .append("</li>");
-                            }
-                        }
-                    }
-                    categoriesHtml.append("</ul></li>");
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html lang=\"en\">");
-            out.println("<head>");
-            out.println("<meta charset=\"UTF-8\">");
-            out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
-            out.println("<title>중고 도서 판매</title>");
-            out.println("<link rel=\"stylesheet\" href=\"/test/used/style.css\">");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<header class=\"header\">");
-            out.println("<h1>중고샵</h1>");
-            out.println("<p>해외 직배송 도서 모음!</p>");
-            out.println("</header>");
-            out.println("<main>");
-            out.println("<div class=\"container\">");
-            out.println("<nav class=\"category\">");
-            out.println("<h2>카테고리</h2>");
-            out.println("<ul>");
-            out.println(categoriesHtml.toString());
-            out.println("</ul>");
-            out.println("</nav>");
-            out.println("<section class=\"used-book-upload\">");
-            out.println("<h2>중고 도서 판매</h2>");
-            out.println("<p>판매하실 도서의 정보를 입력해주세요.</p>");
-            out.println("<form id=\"used-book-form\" action=\"/usedbooks\" method=\"post\" enctype=\"multipart/form-data\">");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-title\">도서명:</label>");
-            out.println("<input type=\"text\" id=\"book-title\" name=\"book-title\" required>");
-            out.println("</div>");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-author\">저자:</label>");
-            out.println("<input type=\"text\" id=\"book-author\" name=\"book-author\" required>");
-            out.println("</div>");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-price\">판매 가격:</label>");
-            out.println("<input type=\"number\" id=\"book-price\" name=\"book-price\" min=\"1000\" required> 원");
-            out.println("</div>");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-condition\">도서 상태:</label>");
-            out.println("<select id=\"book-condition\" name=\"book-condition\" required>");
-            out.println("<option value=\"최상\">최상</option>");
-            out.println("<option value=\"상\">상</option>");
-            out.println("<option value=\"중\">중</option>");
-            out.println("<option value=\"하\">하</option>");
-            out.println("</select>");
-            out.println("</div>");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-description\">상세 설명:</label>");
-            out.println("<textarea id=\"book-description\" name=\"book-description\"></textarea>");
-            out.println("</div>");
-            out.println("<div class=\"form-row\">");
-            out.println("<label for=\"book-images\">사진 업로드:</label>");
-            out.println("<input type=\"file\" id=\"book-images\" name=\"book-images\" multiple accept=\"image/*\">");
-            out.println("</div>");
-            out.println("<button type=\"submit\" class=\"submit-button\">판매 등록</button>");
-            out.println("</form>");
-            out.println("</section>");
-            out.println("</div>");
-            out.println("</main>");
-            out.println("</body>");
-            out.println("</html>");
+    public void init() throws ServletException {
+        try {
+            InitialContext ctx = new InitialContext();
+            dataSource = (DataSource) ctx.lookup("/jdbc/MySQLDB");
+        } catch (NamingException e) {
+            throw new ServletException("데이터베이스 연결 설정 오류입니다.", e);
         }
     }
 
+    // 도서 추가
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String publisher = request.getParameter("publisher");
+        String priceStr = request.getParameter("price");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+        String stockStr = request.getParameter("stock");
+        String sellerIdStr = request.getParameter("seller_id");
+        String imagePath = request.getParameter("image_path");
+        String status = request.getParameter("status");
 
-        // 업로드 디렉토리 생성
-        File uploadDir = new File(getServletContext().getRealPath("") + File.separator + UPLOAD_DIR);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+        if (title == null || author == null || priceStr == null || description == null || category == null || stockStr == null || imagePath == null || status == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "필수 데이터가 부족합니다.");
+            return;
         }
+
+        int price;
+        int stock;
+        Integer sellerId = null;
 
         try {
-            // 폼 데이터와 파일 처리
-            String title = request.getParameter("book-title");
-            String author = request.getParameter("book-author");
-            int price = Integer.parseInt(request.getParameter("book-price"));
-            String condition = request.getParameter("book-condition");
-            String description = request.getParameter("book-description");
-
-            // 업로드된 파일 처리
-            Collection<Part> parts = request.getParts();
-            String imagePath = null;
-
-            for (Part part : parts) {
-                if (part.getContentType() != null && part.getContentType().startsWith("image/")) {
-                    String fileName = extractFileName(part);
-                    String filePath = uploadDir + File.separator + fileName;
-                    part.write(filePath);
-                    imagePath = UPLOAD_DIR + "/" + fileName;
-                }
+            price = Integer.parseInt(priceStr);
+            stock = Integer.parseInt(stockStr);
+            if (!sellerIdStr.isEmpty()) {
+                sellerId = Integer.parseInt(sellerIdStr);
             }
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "가격 또는 재고 수량이 유효하지 않습니다.");
+            return;
+        }
 
-            // 데이터베이스에 저장
-            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-                String insertSQL = "INSERT INTO Used_Books (title, author, price, condition, description, image_path) VALUES (?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement pstmt = conn.prepareStatement(insertSQL)) {
-                    pstmt.setString(1, title);
-                    pstmt.setString(2, author);
-                    pstmt.setInt(3, price);
-                    pstmt.setString(4, condition);
-                    pstmt.setString(5, description);
-                    pstmt.setString(6, imagePath);
-                    pstmt.executeUpdate();
-                }
+        String sql = "INSERT INTO books (title, author, publisher, price, description, category, stock, seller_id, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, title);
+            pstmt.setString(2, author);
+            pstmt.setString(3, publisher);
+            pstmt.setInt(4, price);
+            pstmt.setString(5, description);
+            pstmt.setString(6, category);
+            pstmt.setInt(7, stock);
+            if (sellerId != null) {
+                pstmt.setInt(8, sellerId);
+            } else {
+                pstmt.setNull(8, java.sql.Types.INTEGER);
             }
+            pstmt.setString(9, imagePath);
+            pstmt.setString(10, status);
 
-            // 성공 메시지 출력
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<html><body>");
-                out.println("<h2>도서 판매 등록이 완료되었습니다.</h2>");
-                out.println("<a href=\"/usedbooks\">돌아가기</a>");
-                out.println("</body></html>");
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true, \"message\": \"도서가 성공적으로 추가되었습니다.\"}");
+            } else {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "도서 추가에 실패하였습니다.");
             }
-
         } catch (SQLException e) {
-            e.printStackTrace();
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<html><body>");
-                out.println("<h2>도서 판매 등록 중 오류가 발생했습니다.</h2>");
-                out.println("<a href=\"/usedbooks\">돌아가기</a>");
-                out.println("</body></html>");
-            }
+            throw new ServletException("도서 추가 중 데이터베이스 오류 발생", e);
         }
     }
 
-    // 파일 이름 추출
-    private String extractFileName(Part part) {
-        String contentDisposition = part.getHeader("Content-Disposition");
-        for (String cd : contentDisposition.split(";")) {
-            if (cd.trim().startsWith("filename")) {
-                return cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-            }
+    // 도서 조회
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bookIdStr = request.getParameter("book_id");
+        if (bookIdStr == null || bookIdStr.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "도서 ID가 필요합니다.");
+            return;
         }
-        return null;
+
+        int bookId;
+        try {
+            bookId = Integer.parseInt(bookIdStr);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "유효하지 않은 도서 ID입니다.");
+            return;
+        }
+
+        String sql = "SELECT * FROM books WHERE book_id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, bookId);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    response.setContentType("application/json");
+                    response.setCharacterEncoding("UTF-8");
+                    response.getWriter().write("{"
+                            + "\"book_id\": " + rs.getInt("book_id") + ","
+                            + "\"title\": \"" + rs.getString("title") + "\","
+                            + "\"author\": \"" + rs.getString("author") + "\","
+                            + "\"publisher\": \"" + rs.getString("publisher") + "\","
+                            + "\"price\": " + rs.getInt("price") + ","
+                            + "\"description\": \"" + rs.getString("description") + "\","
+                            + "\"category\": \"" + rs.getString("category") + "\","
+                            + "\"stock\": " + rs.getInt("stock") + ","
+                            + "\"seller_id\": " + (rs.getObject("seller_id") != null ? rs.getInt("seller_id") : "null") + ","
+                            + "\"image_path\": \"" + rs.getString("image_path") + "\","
+                            + "\"status\": \"" + rs.getString("status") + "\""
+                            + "}");
+                } else {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND, "도서를 찾을 수 없습니다.");
+                }
+            }
+        } catch (SQLException e) {
+            throw new ServletException("도서 조회 중 데이터베이스 오류 발생", e);
+        }
+    }
+
+    // 도서 업데이트
+    @Override
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bookIdStr = request.getParameter("book_id");
+        if (bookIdStr == null || bookIdStr.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "도서 ID가 필요합니다.");
+            return;
+        }
+
+        int bookId;
+        try {
+            bookId = Integer.parseInt(bookIdStr);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "유효하지 않은 도서 ID입니다.");
+            return;
+        }
+
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String publisher = request.getParameter("publisher");
+        String priceStr = request.getParameter("price");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+        String stockStr = request.getParameter("stock");
+        String sellerIdStr = request.getParameter("seller_id");
+        String imagePath = request.getParameter("image_path");
+        String status = request.getParameter("status");
+
+        if (title == null || author == null || priceStr == null || description == null || category == null || stockStr == null || imagePath == null || status == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "필수 데이터가 부족합니다.");
+            return;
+        }
+
+        int price;
+        int stock;
+        Integer sellerId = null;
+
+        try {
+            price = Integer.parseInt(priceStr);
+            stock = Integer.parseInt(stockStr);
+            if (!sellerIdStr.isEmpty()) {
+                sellerId = Integer.parseInt(sellerIdStr);
+            }
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "가격 또는 재고 수량이 유효하지 않습니다.");
+            return;
+        }
+
+        String sql = "UPDATE books SET title = ?, author = ?, publisher = ?, price = ?, description = ?, category = ?, stock = ?, seller_id = ?, image_path = ?, status = ? WHERE book_id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, title);
+            pstmt.setString(2, author);
+            pstmt.setString(3, publisher);
+            pstmt.setInt(4, price);
+            pstmt.setString(5, description);
+            pstmt.setString(6, category);
+            pstmt.setInt(7, stock);
+            if (sellerId != null) {
+                pstmt.setInt(8, sellerId);
+            } else {
+                pstmt.setNull(8, java.sql.Types.INTEGER);
+            }
+            pstmt.setString(9, imagePath);
+            pstmt.setString(10, status);
+            pstmt.setInt(11, bookId);
+
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true, \"message\": \"도서가 성공적으로 업데이트되었습니다.\"}");
+            } else {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "도서 업데이트에 실패하였습니다.");
+            }
+        } catch (SQLException e) {
+            throw new ServletException("도서 업데이트 중 데이터베이스 오류 발생", e);
+        }
+    }
+
+    // 도서 삭제
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String bookIdStr = request.getParameter("book_id");
+        if (bookIdStr == null || bookIdStr.isEmpty()) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "도서 ID가 필요합니다.");
+            return;
+        }
+
+        int bookId;
+        try {
+            bookId = Integer.parseInt(bookIdStr);
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "유효하지 않은 도서 ID입니다.");
+            return;
+        }
+
+        String sql = "DELETE FROM books WHERE book_id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, bookId);
+
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write("{\"success\": true, \"message\": \"도서가 성공적으로 삭제되었습니다.\"}");
+            } else {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "도서 삭제에 실패하였습니다.");
+            }
+        } catch (SQLException e) {
+            throw new ServletException("도서 삭제 중 데이터베이스 오류 발생", e);
+        }
     }
 }

@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(data => {
 			console.log(data);
-            if (data && data.book) {
-                displayBookInfo(data.book);
+            if (data && data.books) {
+                displayBookInfo(data.books);
             } else {
                 alert("도서 정보를 찾을 수 없습니다.");
             }
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 도서 정보 표시
     function displayBookInfo(book) {
+		console.log(book);
         const titleElement = document.getElementById("book-title");
         const authorElement = document.getElementById("book-author");
         const priceElement = document.getElementById("book-price");

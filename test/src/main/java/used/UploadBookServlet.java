@@ -32,20 +32,40 @@ public class UploadBookServlet extends HttpServlet {
             throws ServletException, IOException {
         
         // 폼 데이터 처리
-        String title = request.getParameter("book-title");
-        String author = request.getParameter("book-author");
-        String price = request.getParameter("book-price");
-        String condition = request.getParameter("book-condition");
-        String description = request.getParameter("book-description");
+        String title = request.getParameter("title");
+        String author = request.getParameter("author");
+        String publisher = request.getParameter("publisher");
+        String priceStr = request.getParameter("price");
+        String description = request.getParameter("description");
+        String category = request.getParameter("category");
+        String stockStr = request.getParameter("stock");
+        String sellerIdStr = request.getParameter("seller_id");
+        String status = request.getParameter("status");
 
-        Part coverImagePart = request.getPart("book-cover");
-        
+        Part coverImagePart = request.getPart("image_path");
+
         // 데이터 유효성 검사
-        if (title == null || author == null || price == null || condition == null || description == null) {
+        if (title == null || author == null || priceStr == null || description == null || category == null || stockStr == null || sellerIdStr == null || status == null) {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter out = response.getWriter();
             out.print("{\"success\": false, \"message\": \"필수 데이터가 부족합니다.\"}");
+            out.flush();
+            return;
+        }
+
+        int price;
+        int stock;
+        int sellerId;
+        try {
+            price = Integer.parseInt(priceStr);
+            stock = Integer.parseInt(stockStr);
+            sellerId = Integer.parseInt(sellerIdStr);
+        } catch (NumberFormatException e) {
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            PrintWriter out = response.getWriter();
+            out.print("{\"success\": false, \"message\": \"유효하지 않은 숫자 형식입니다.\"}");
             out.flush();
             return;
         }
@@ -69,14 +89,18 @@ public class UploadBookServlet extends HttpServlet {
 
         // 데이터베이스 저장
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            String sql = "INSERT INTO books (title, author, price, condition, description, cover_image) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO books (title, author, publisher, price, description, category, stock, seller_id, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, title);
                 pstmt.setString(2, author);
-                pstmt.setBigDecimal(3, new java.math.BigDecimal(price));
-                pstmt.setString(4, condition);
+                pstmt.setString(3, publisher);
+                pstmt.setInt(4, price);
                 pstmt.setString(5, description);
-                pstmt.setString(6, coverImageFileName);
+                pstmt.setString(6, category);
+                pstmt.setInt(7, stock);
+                pstmt.setInt(8, sellerId);
+                pstmt.setString(9, coverImageFileName);
+                pstmt.setString(10, status);
 
                 int rowsAffected = pstmt.executeUpdate();
                 if (rowsAffected > 0) {

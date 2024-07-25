@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>중고책 등록</title>
     <link rel="stylesheet" href="/test/used/style.css">
-    <script src="/test/used/script.js"></script>
+    <script src="/test/used/script.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -18,7 +18,7 @@
             <!-- 중고책 등록 폼 -->
             <section class="insert-book">
                 <h2>중고책 등록</h2>
-                <form id="bookForm" action="insertUsedBook.jsp" method="post" enctype="multipart/form-data">
+                <form id="bookForm" action="registerUsedBookResult.jsp" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <label for="book-title">도서명:</label>
                         <input type="text" id="book-title" name="title" required>
@@ -32,12 +32,10 @@
                         <input type="number" id="book-price" name="price" min="1000" required> 원
                     </div>
                     <div class="form-row">
-                        <label for="book-condition">도서 상태:</label>
-                        <select id="book-condition" name="condition" required>
-                            <option value="best">최상</option>
-                            <option value="good">상</option>
-                            <option value="fair">중</option>
-                            <option value="poor">하</option>
+                        <label for="book-status">도서 상태:</label>
+                        <select id="book-status" name="status" required>
+                            <option value="신책">신책</option>
+                            <option value="중고책">중고책</option>
                         </select>
                     </div>
                     <div class="form-row">
@@ -58,9 +56,8 @@
 
     <script>
         document.getElementById('bookForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            if (confirm('중고책을 등록하시겠습니까?')) {
-                this.submit();
+            if (!confirm('중고책을 등록하시겠습니까?')) {
+                event.preventDefault(); // 사용자가 취소하면 폼 제출을 막습니다.
             }
         });
     </script>

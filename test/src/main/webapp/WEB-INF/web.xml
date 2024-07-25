@@ -3,16 +3,8 @@
   <display-name>test</display-name>
   
     <welcome-file-list>
-		 <welcome-file>index.jsp</welcome-file>
+		 <welcome-file>/used/used_books.jsp</welcome-file>
 	</welcome-file-list>
 	
-  <servlet>
-		<servlet-name>loadBooksServlet</servlet-name>
-		<servlet-class>usedlist.LoadBooksServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>loadBooksServlet</servlet-name>
-		<url-pattern>/loadBooksServlet</url-pattern>
-	</servlet-mapping>
+  
 </web-app>

@@ -4,13 +4,17 @@ public class Book {
     private int id;
     private String title;
     private String author;
-    private double price;
-    private String image;
+    private String publisher;
+    private int price;
+    private String description;
+    private String category;
+    private int stock;
+    private Integer sellerId; // Optional 필드
+    private String imagePath;
+    private String status;
 
-    // 기본 생성자
-    public Book() {}
+    // 모든 필드에 대한 getter 및 setter
 
-    // Getter 및 Setter
     public int getId() {
         return id;
     }
@@ -35,19 +39,67 @@ public class Book {
         this.author = author;
     }
 
-    public double getPrice() {
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
+
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
-    public String getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

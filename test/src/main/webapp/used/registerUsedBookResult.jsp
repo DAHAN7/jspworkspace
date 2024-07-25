@@ -22,7 +22,7 @@
                     Integer memberNum = (Integer) session.getAttribute("memberNum");
 
                     if (memberNum == null) {
-                        out.println("<p>세션에서 회원 정보를 찾을 수 없습니다. </p>");
+                        out.println("<p>세션에서 회원 정보를 찾을 수 없습니다. 로그인 후 다시 시도해 주세요.</p>");
                         return;
                     }
 
@@ -30,20 +30,25 @@
                     String title = request.getParameter("title");
                     String author = request.getParameter("author");
                     String priceStr = request.getParameter("price");
-                    String condition = request.getParameter("condition");
+                    String publisher = request.getParameter("publisher");
                     String description = request.getParameter("description");
-                    Part imagePart = request.getPart("images");  // 파일 업로드 처리
+                    String category = request.getParameter("category");
+                    String stockStr = request.getParameter("stock");
+                    Part imagePart = request.getPart("image");  // 파일 업로드 처리
+                    String status = request.getParameter("status");
 
-                    if (title == null || author == null || priceStr == null || condition == null || imagePart == null) {
+                    if (title == null || author == null || priceStr == null || publisher == null || description == null || category == null || stockStr == null || status == null || imagePart == null) {
                         out.println("<p>모든 필드를 입력해 주세요.</p>");
                         return;
                     }
 
-                    double price;
+                    int price;
+                    int stock;
                     try {
-                        price = Double.parseDouble(priceStr);
+                        price = Integer.parseInt(priceStr);
+                        stock = Integer.parseInt(stockStr);
                     } catch (NumberFormatException e) {
-                        out.println("<p>가격 입력에 오류가 발생했습니다: " + e.getMessage() + "</p>");
+                        out.println("<p>가격 또는 재고 입력에 오류가 발생했습니다: " + e.getMessage() + "</p>");
                         return;
                     }
 
@@ -53,15 +58,28 @@
                     try {
                         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/baskin", "digital", "1234");
 
-                        String sql = "INSERT INTO used_books (title, author, price, condition, description, seller_id, image) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        String sql = "INSERT INTO books (title, author, price, publisher, description, category, stock, seller_id, image_path, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                         pstmt = conn.prepareStatement(sql);
                         pstmt.setString(1, title);
                         pstmt.setString(2, author);
-                        pstmt.setDouble(3, price);
-                        pstmt.setString(4, condition);
+                        pstmt.setInt(3, price);
+                        pstmt.setString(4, publisher);
                         pstmt.setString(5, description);
-                        pstmt.setInt(6, memberNum);
-                        pstmt.setBlob(7, imagePart.getInputStream());  // 이미지 파일을 Blob으로 저장
+                        pstmt.setString(6, category);
+                        pstmt.setInt(7, stock);
+                        pstmt.setInt(8, memberNum);
+
+                        // 이미지 파일을 경로로 저장
+                        if (imagePart.getSize() > 0) {
+                            String imagePath = "images/" + System.currentTimeMillis() + "_" + imagePart.getSubmittedFileName();
+                            String uploadPath = getServletContext().getRealPath("/") + imagePath;
+                            imagePart.write(uploadPath);
+                            pstmt.setString(9, imagePath);
+                        } else {
+                            pstmt.setNull(9, java.sql.Types.VARCHAR);  // 이미지가 없으면 NULL로 설정
+                        }
+
+                        pstmt.setString(10, status);
 
                         int rowsAffected = pstmt.executeUpdate();
 

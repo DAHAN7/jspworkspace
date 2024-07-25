@@ -1,78 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f" %>
-<%@ page import="java.io.*, java.util.*" %>
-<%
-	// name == profileImage file upload
-	String path = "C:\\Temp\\upload\\profile";
-	File file = new File(path);
-	if(!file.exists()){
-		file.mkdirs();
-	}
-%>
-<!-- joinCheck.jsp -->
-<!-- 회원가입 처리 -->
-<jsp:useBean id="joinMember" class="vo.MemberVO" />
-<jsp:setProperty property="*" name="joinMember" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="s" %>
+<!-- loginCheck.jsp -->
+<!--
+	 로그인 요청 처리 
+	 로그인 성공한 회원의 정보를 member 를 키값으로 저장
+-->
+<jsp:useBean id="member" class="vo.MemberVO" scope="session" />
 
-<%
-	Collection<Part> parts = request.getParts();
-	if(parts != null){
-		for(Part p : parts){
-			if(p.getContentType() != null && p.getName().equals("profileImage")){
-				
-				// 원본 파일 이름
-				String fileName = p.getSubmittedFileName();
-				UUID uid = UUID.randomUUID();
-				fileName = uid.toString().replace("-","")+"_"+fileName;
-				String uploadPath = path + File.separator + fileName;
-				System.out.println("uploadPath : "+uploadPath);
-				// 업로드된 임시파일을 uploadPath copy
-				p.write(uploadPath);
-				p.delete();
-				joinMember.setU_profile(fileName);
-			}
-		}
-	}
+<!-- datbase 에서 u_id , u_pw 컬럼의 값이 일치하는 사용자 정보 검색 -->
+<c:catch var="e">
+	<s:query var="rs" dataSource="jdbc/MySQLDB">
+		SELECT * FROM digital_member 
+		WHERE u_id = ? AND u_pw = ?
+		<s:param>${param.u_id}</s:param>
+		<s:param>${param.u_pass}</s:param>
+	</s:query>
+	
+	<c:choose>
+		<c:when test="${rs.rowCount == 1}">
+			<!-- 일치하는 사용자 정보 검색 -->
+			<!-- rs.columnNames  테이블의 컬럼 이름 목록 -->
+			<c:forEach var="columnName" items="${rs.columnNames}">
+				<c:set target="${member}" property="${columnName}" value="${rs.rows[0][columnName]}"/>
+			</c:forEach>
+			<%-- 
+			<c:set target="${member}" property="u_id" value="${rs.rows[0].u_id}"/>
+			 --%>
+			 <%-- ${member} --%>
+			 <!-- 로그인 성공 시 session에 member 정보 추가 후 자동로그인 체크박스 확인 -->
+			 <c:if test="${!empty param.login}">
+			 	<!-- 사용자가 로그인 상태 유지 요청 -->
+			 	<%
+			 		// response 객체를 통해서 사용자 브라우저에 쿠키 정보 등록
+			 		Cookie cookie = new Cookie("u_id", member.getU_id());
+			 		cookie.setPath("/");
+			 		cookie.setMaxAge(60*60*24*7);  //seconds
+			 		response.addCookie(cookie);
+			 	%>
+			 </c:if>
+			 <script>
+			 	alert('${member.u_id} : 로그인 성공');
+			 	location.href='${path}'; // 메인으로 이동
+			 </script>
+		</c:when>
+		<c:otherwise>
+			<!-- 일치하는 사용자 정보가 존재하지 않음 -->
+			<script>
+				alert('로그인 실패');
+				history.go(-1);
+			</script>
+		</c:otherwise>
+	</c:choose>
+</c:catch> 
 
-%>
-
-<%-- ${joinMember}  --%>
-<s:update var="result" dataSource="jdbc/MySQLDB">
-	INSERT INTO digital_member
-	(u_id, u_pw,u_name, u_profile, u_phone, u_birth, u_addr, u_addr_detail, u_addr_post)
-	VALUES(?,?,?,?,?,?,?,?,?); 
-	<s:param>${joinMember.u_id}</s:param>
-	<s:param>${joinMember.u_pw}</s:param>
-	<s:param>${joinMember.u_name}</s:param>
-	<s:param>${joinMember.u_profile}</s:param>
-	<s:param>${joinMember.u_phone}</s:param>
-	<s:param>${joinMember.u_birth}</s:param>
-	<s:param>${joinMember.u_addr}</s:param>
-	<s:param>${joinMember.u_addr_detail}</s:param>
-	<s:param>${joinMember.u_addr_post}</s:param>
-</s:update>
-<c:choose>
-	<c:when test="${result == 1}">
-		<script>
-			alert('회원가입 성공');
-			location.href='login.jsp';
-		</script>
-	</c:when>
-	<c:otherwise>
-		<script>
-			alert('회원가입 실패');
-			history.go(-1);
-		</script>
-	</c:otherwise>
-</c:choose>
-
-
-
-
-
-
-
-
+<c:if test="${!empty e}">
+	${e.printStackTrace()} 
+	<script>
+		alert('로그인 실패 - ${e.getMessage()}');
+		history.back();
+	</script>
+</c:if>

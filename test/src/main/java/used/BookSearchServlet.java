@@ -17,7 +17,9 @@ import java.sql.SQLException;
 @WebServlet("/api/books")
 public class BookSearchServlet extends HttpServlet {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/baskin";
+	private static final long serialVersionUID = -8395914846321777942L;
+	
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/baskin";
     private static final String DB_USER = "digital";
     private static final String DB_PASSWORD = "1234";
 
@@ -30,7 +32,7 @@ public class BookSearchServlet extends HttpServlet {
         // 데이터베이스 검색 로직
         String jsonResponse;
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            String sql = "SELECT title, author, price, publisher, description, category, stock, seller_id, image_path, status " +
+            String sql = "SELECT book_id, title, author, publisher, price, description, category, stock, seller_id, image_path, status " +
                          "FROM books WHERE title LIKE ? OR author LIKE ? OR publisher LIKE ?";
             try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 String searchQuery = "%" + query + "%";
@@ -39,25 +41,32 @@ public class BookSearchServlet extends HttpServlet {
                 pstmt.setString(3, searchQuery);
 
                 try (ResultSet rs = pstmt.executeQuery()) {
-                    if (rs.next()) {
-                        // 검색 결과가 있는 경우
-                        jsonResponse = "{"
-                                + "\"book\": {"
-                                + "\"title\": \"" + escapeJson(rs.getString("title")) + "\","
-                                + "\"author\": \"" + escapeJson(rs.getString("author")) + "\","
-                                + "\"price\": \"" + escapeJson(rs.getString("price")) + "\","
-                                + "\"publisher\": \"" + escapeJson(rs.getString("publisher")) + "\","
-                                + "\"description\": \"" + escapeJson(rs.getString("description")) + "\","
-                                + "\"category\": \"" + escapeJson(rs.getString("category")) + "\","
-                                + "\"stock\": " + rs.getInt("stock") + ","
-                                + "\"seller_id\": \"" + escapeJson(rs.getString("seller_id")) + "\","
-                                + "\"image\": \"" + escapeJson(rs.getString("image_path")) + "\","
-                                + "\"status\": \"" + escapeJson(rs.getString("status")) + "\""
-                                + "}"
-                                + "}";
-                    } else {
-                        jsonResponse = "{\"book\": null}";
+                    StringBuilder jsonBuilder = new StringBuilder();
+                    jsonBuilder.append("{ \"books\": [");
+                    
+                    boolean first = true;
+                    while (rs.next()) {
+                        if (!first) {
+                            jsonBuilder.append(",");
+                        }
+                        jsonBuilder.append("{")
+                                .append("\"book_id\": ").append(rs.getInt("book_id")).append(",")
+                                .append("\"title\": \"").append(escapeJson(rs.getString("title"))).append("\",")
+                                .append("\"author\": \"").append(escapeJson(rs.getString("author"))).append("\",")
+                                .append("\"publisher\": \"").append(escapeJson(rs.getString("publisher"))).append("\",")
+                                .append("\"price\": ").append(rs.getInt("price")).append(",")
+                                .append("\"description\": \"").append(escapeJson(rs.getString("description"))).append("\",")
+                                .append("\"category\": \"").append(escapeJson(rs.getString("category"))).append("\",")
+                                .append("\"stock\": ").append(rs.getInt("stock")).append(",")
+                                .append("\"seller_id\": ").append(rs.getInt("seller_id")).append(",")
+                                .append("\"image_path\": \"").append(escapeJson(rs.getString("image_path"))).append("\",")
+                                .append("\"status\": \"").append(escapeJson(rs.getString("status"))).append("\"")
+                                .append("}");
+                        first = false;
                     }
+                    jsonBuilder.append("]}");
+
+                    jsonResponse = jsonBuilder.toString();
                 }
             } catch (SQLException e) {
                 jsonResponse = "{\"success\": false, \"message\": \"데이터베이스 오류: " + escapeJson(e.getMessage()) + "\"}";
@@ -78,7 +87,6 @@ public class BookSearchServlet extends HttpServlet {
         if (str == null) {
             return "";
         }
-        // JSON 문자열에서 사용되는 특수 문자들을 이스케이프 처리합니다.
         return str.replace("\\", "\\\\")
                   .replace("\"", "\\\"")
                   .replace("\b", "\\b")

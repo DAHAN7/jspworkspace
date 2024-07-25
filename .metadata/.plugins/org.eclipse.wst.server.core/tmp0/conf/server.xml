@@ -174,20 +174,7 @@
 	
 	<Resource driverClassName="com.mysql.cj.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="10" maxActive="100" maxWait="60000" minIdle="10" name="jdbc/MySQLDB" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/digital_jsp" username="digital"/>
 	
-<Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_16_model_1_template\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context><Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_15_EL_JSTL\src\main\webapp" path="/jsp_15_EL_JSTL" reloadable="true" source="org.eclipse.jst.jee.server:jsp_15_EL_JSTL">
-	<!-- 등록된 자원 공유 -->
-	<Resource age="10" factory="org.apache.naming.factory.BeanFactory" id="id001" name="java/testVO" type="test.TestVO"/>
-	
-	<Resource driverClassName="com.mysql.cj.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="10" maxActive="200" maxWait="6000" minIdle="10" name="java/MySQLDB" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/digital_jsp" username="digital"/>
-			  <!--
-			  	minIdle : 최소한으로 유지될 Connection 객체의 수 - 기본값 0
-			  	maxWait:사용할 수 있는 커넥션 객체가 없을때 사용자의 대기 시간 설정(1/1000)
-			  	maxActive : 동시에 제공할 수 있는 최대 연결 개수 - 기본 값 : 8
-			  	initialSize:dataSource 객체 생성 후 최초에 getConnection()이 호출되었을때 
-			  					커넥션 풀에 생성 해둘 커넥션 객체 개수
-			  					-->
-				
-<Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_15_EL_JSTL\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
+<Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_16_model_1_template\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
     </Engine>
   </Service>
 </Server>

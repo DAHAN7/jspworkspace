@@ -28,7 +28,7 @@ public class UsedBookListServlet extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
-            out.println("<html lang=\"en\">");
+            out.println("<html lang=\"ko\">"); // 한국어로 언어 설정
             out.println("<head>");
             out.println("<meta charset=\"UTF-8\">");
             out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
@@ -56,7 +56,7 @@ public class UsedBookListServlet extends HttpServlet {
             // 데이터베이스 연결
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 // 카테고리 목록 가져오기
-                String categorySQL = "SELECT DISTINCT category FROM Books ORDER BY category";
+                String categorySQL = "SELECT DISTINCT category FROM books ORDER BY category";
                 try (PreparedStatement pstmt = conn.prepareStatement(categorySQL);
                      ResultSet rs = pstmt.executeQuery()) {
 
@@ -68,10 +68,9 @@ public class UsedBookListServlet extends HttpServlet {
                         out.println("</button>");
                         out.println("<ul id=\"" + category + "\" class=\"subcategory-list\">");
 
-                        // 서브카테고리(중고 도서) 목록 가져오기
-                        String usedBooksSQL = "SELECT B.title, B.author, B.price, B.publisher, UB.stock, UB.status, UB.description " +
-                                              "FROM Used_Books UB INNER JOIN Books B ON UB.book_id = B.book_id " +
-                                              "WHERE B.category = ? ORDER BY B.title";
+                        // 중고 도서 목록 가져오기
+                        String usedBooksSQL = "SELECT title, author, price, publisher, stock, status, description, image_path " +
+                                              "FROM books WHERE category = ? AND status = '중고책' ORDER BY title";
                         try (PreparedStatement pstmt2 = conn.prepareStatement(usedBooksSQL)) {
                             pstmt2.setString(1, category);
                             try (ResultSet usedBooksRS = pstmt2.executeQuery()) {
@@ -79,13 +78,17 @@ public class UsedBookListServlet extends HttpServlet {
                                     String bookTitle = usedBooksRS.getString("title");
                                     String author = usedBooksRS.getString("author");
                                     int price = usedBooksRS.getInt("price");
+                                    String publisher = usedBooksRS.getString("publisher");
                                     int stock = usedBooksRS.getInt("stock");
                                     String status = usedBooksRS.getString("status");
                                     String description = usedBooksRS.getString("description");
+                                    String imagePath = usedBooksRS.getString("image_path");
                                     out.println("<li>");
                                     out.println("<div class=\"book-info\">");
+                                    out.println("<img src=\"" + imagePath + "\" alt=\"" + bookTitle + "\" class=\"book-image\">");
                                     out.println("<h3>" + bookTitle + "</h3>");
                                     out.println("<p>저자: " + author + "</p>");
+                                    out.println("<p>출판사: " + publisher + "</p>");
                                     out.println("<p>가격: " + price + " 원</p>");
                                     out.println("<p>상태: " + status + "</p>");
                                     out.println("<p>재고: " + stock + "</p>");
