@@ -112,6 +112,7 @@
                             <div class="buttons">
                                 <button class="buy-now" data-used-book-id="${book.used_book_id}">바로구매</button>
                                 <button class="add-to-list" data-used-book-id="${book.used_book_id}">리스트에 넣기</button>
+                                <button class="delete-book" data-used-book-id="${book.used_book_id}">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -146,13 +147,42 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('click', function(event) {
-                if (event.target.classList.contains('buy-now')) {
+                if (event.target.classList.contains('delete-book')) {
+                    handleDeleteBook(event.target.getAttribute('data-used-book-id'));
+                } else if (event.target.classList.contains('buy-now')) {
                     handleBuyNow(event.target.getAttribute('data-used-book-id'));
                 } else if (event.target.classList.contains('add-to-list')) {
                     handleAddToList(event.target.getAttribute('data-used-book-id'));
                 }
             });
         });
+
+        async function handleDeleteBook(usedBookId) {
+            if (!confirm('정말로 이 도서를 삭제하시겠습니까?')) {
+                return;
+            }
+
+            showLoading();
+
+            try {
+                let response = await fetch('deleteBook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ bookId: usedBookId })
+                });
+
+                if (response.ok) {
+                    alert('도서가 삭제되었습니다.');
+                    location.reload(); // 페이지 새로 고침
+                } else {
+                    alert('삭제 오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            } catch (error) {
+                alert('오류가 발생했습니다. 다시 시도해주세요.');
+            } finally {
+                hideLoading();
+            }
+        }
 
         async function handleBuyNow(usedBookId) {
             showLoading();
