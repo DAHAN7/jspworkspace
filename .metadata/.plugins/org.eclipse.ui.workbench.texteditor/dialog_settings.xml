@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="fetchBookInfo"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="test"/>
+			<item value="used-book-form"/>
+			<item value="submitBtn"/>
+			<item value="&lt;c:forEach var=&quot;book&quot; items=&quot;${currentBooks}&quot;&gt;"/>
 			<item value="fetchBookInfo"/>
 			<item value="검색"/>
 			<item value="displayBookInfo"/>
@@ -19,17 +23,13 @@
 			<item value="$"/>
 			<item value="exam"/>
 			<item value="com."/>
-			<item value="com"/>
-			<item value="active"/>
-			<item value="session"/>
-			<item value="base"/>
 		</list>
 		<list key="replacehistory">
 			<item value="/"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1161"/>
+		<item key="DIALOG_X_ORIGIN" value="1160"/>
 		<item key="DIALOG_Y_ORIGIN" value="62"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

@@ -5,6 +5,7 @@
     <welcome-file-list>
 		 <welcome-file>/used/used_books.jsp</welcome-file>
 	</welcome-file-list>
-	
+	 
+   
   
 </web-app>
