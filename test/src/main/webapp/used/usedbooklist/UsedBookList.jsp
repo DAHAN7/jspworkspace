@@ -76,7 +76,7 @@
 
     <!-- 데이터베이스에서 총 서적 수 조회 -->
     <sql:query var="totalBooksCount" dataSource="/jdbc/baskin">
-        SELECT COUNT(*) AS count FROM Used_Books WHERE status = '중고책'
+        SELECT COUNT(*) AS count FROM books WHERE status = '중고책'
     </sql:query>
 
     <!-- 페이지 설정 및 페이징 정보 -->
@@ -89,10 +89,8 @@
 
     <!-- 서적 목록 조회 -->
     <sql:query var="books" dataSource="/jdbc/baskin">
-        SELECT ub.*, b.title, b.author, b.publisher, b.price, b.image_path, b.description, b.category, b.stock
-        FROM Used_Books ub
-        JOIN Books b ON ub.book_id = b.book_id
-        WHERE ub.status = '중고책'
+        SELECT * FROM books
+        WHERE status = '중고책'
         LIMIT ${cri.getStartRow()}, ${cri.getPerPageNum()}
     </sql:query>
 
@@ -110,9 +108,9 @@
                             <p class="book-details">카테고리: ${book.category}</p>
                             <p class="book-details">재고: ${book.stock}권</p>
                             <div class="buttons">
-                                <button class="buy-now" data-used-book-id="${book.used_book_id}">바로구매</button>
-                                <button class="add-to-list" data-used-book-id="${book.used_book_id}">리스트에 넣기</button>
-                                <button class="delete-book" data-used-book-id="${book.used_book_id}">삭제</button>
+                                <button class="buy-now" data-book-id="${book.book_id}">바로구매</button>
+                                <button class="add-to-list" data-book-id="${book.book_id}">리스트에 넣기</button>
+                                <button class="delete-book" data-book-id="${book.book_id}">삭제</button>
                             </div>
                         </div>
                     </div>
@@ -148,16 +146,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             document.addEventListener('click', function(event) {
                 if (event.target.classList.contains('delete-book')) {
-                    handleDeleteBook(event.target.getAttribute('data-used-book-id'));
+                    handleDeleteBook(event.target.getAttribute('data-book-id'));
                 } else if (event.target.classList.contains('buy-now')) {
-                    handleBuyNow(event.target.getAttribute('data-used-book-id'));
+                    handleBuyNow(event.target.getAttribute('data-book-id'));
                 } else if (event.target.classList.contains('add-to-list')) {
-                    handleAddToList(event.target.getAttribute('data-used-book-id'));
+                    handleAddToList(event.target.getAttribute('data-book-id'));
                 }
             });
         });
 
-        async function handleDeleteBook(usedBookId) {
+        async function handleDeleteBook(bookId) {
             if (!confirm('정말로 이 도서를 삭제하시겠습니까?')) {
                 return;
             }
@@ -168,7 +166,7 @@
                 let response = await fetch('deleteBook', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ bookId: usedBookId })
+                    body: new URLSearchParams({ bookId })
                 });
 
                 if (response.ok) {
@@ -184,14 +182,14 @@
             }
         }
 
-        async function handleBuyNow(usedBookId) {
+        async function handleBuyNow(bookId) {
             showLoading();
 
             try {
                 let response = await fetch('?action=buyNow', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ usedBookId })
+                    body: new URLSearchParams({ bookId })
                 });
 
                 if (response.ok) {
@@ -206,14 +204,14 @@
             }
         }
 
-        async function handleAddToList(usedBookId) {
+        async function handleAddToList(bookId) {
             showLoading();
 
             try {
                 let response = await fetch('?action=addToList', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ usedBookId })
+                    body: new URLSearchParams({ bookId })
                 });
 
                 if (response.ok) {

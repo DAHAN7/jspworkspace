@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배스킨라빈스31.2</title>
+    <style>
+        body {
+            font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header, .top-bar, footer {
+            background-color: #002A5C;
+            color: white;
+            padding: 1rem;
+        }
+        header h1, .logo {
+            margin: 0;
+            font-size: 2rem;
+        }
+        nav ul, .top-menu {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+            justify-content: center;
+        }
+        nav ul li, .top-menu li {
+            margin: 0 1rem;
+            position: relative;
+        }
+        nav ul li a, .top-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            position: relative;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        nav ul li:hover .tooltip {
+            opacity: 1;
+        }
+        .main-content, .notice-section, .customer-service-section {
+            padding: 20px 0;
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .book-list, .notice-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .book-item, .notice-item {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book-item img, .notice-item img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .book-item .title, .notice-item h3 {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .book-item .author, .notice-item p {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .book-item .price {
+            color: #FF0000;
+        }
+        .more-button {
+            display: block;
+            margin: 10px auto;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-button {
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .right-items {
+            display: flex;
+            align-items: center;
+        }
+        .right-item {
+            margin-left: 20px;
+        }
+        .customer-service-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        .customer-service-section li {
+            margin-bottom: 10px;
+        }
+        .customer-service-section li span {
+            font-weight: bold;
+        }
+        .customer-service-section li a {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer-content div {
+            flex: 1;
+        }
+        .footer-content h3 {
+            margin: 0 0 5px 0;
+        }
+        .footer-content p,
+        .footer-content address {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>배스킨라빈스31.2</h1>
+        <nav>
+            <ul>
+                <li><a href="#">도서</a></li>
+                <li>
+                    <a href="#">회원/판매자
+                        <div class="tooltip">회원 정보 관리, 판매자 신청</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">도서 검색
+                        <div class="tooltip">회사에서 도서 판매 게시글 검색</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">신청 도서
+                        <div class="tooltip">회사에 도서 구매 신청</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">개인 중고
+                        <div class="tooltip">개인 간 중고 도서 판매</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="top-bar">
+        <div class="container">
+            <ul class="top-menu">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">장바구니</a></li>
+                <li><a href="#">주문/배송</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="logo">배스킨라빈스31.2</div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="성낙현의 JSP출간!">
+            <button class="search-button">Q</button>
+        </div>
+        <div class="right-items">
+            <div class="right-item">금주의 문구/GIFT</div>
+            <div class="right-item">슈퍼특가 보러가기</div>
+        </div>
+    </div>
+    <main>
+        <section class="main-content">
+            <div class="container">
+                <div class="section-title">배스킨라빈스31.2 PICK</div>
+                <div class="book-list">
+                    <div class="book-item">
+                        <img src="" alt="CSS 책 이미지">
+                        <div class="title">CSS</div>
+                        <div class="author">최기근</div>
+                        <div class="price">13,000원</div>
+                    </div>
+                    <div class="book-item">
+                        <img src="" alt="HTML 책 이미지">
+                        <div class="title">HTML</div>
+                        <div class="author">최기근</div>
+                        <div class="price">15,000원</div>
+                    </div>
+                    <div class="book-item">
+                        <img src="" alt="JSP 책 이미지">
+                        <div class="title">JSP</div>
+                        <div class="author">최기근</div>
+                        <div class="price">31,500원</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="notice-section">
+            <div class="container">
+                <ul class="notice-list">
+                    <li class="notice-item">
+                        <img src="BUSANIT_card.jpg" alt="부산IT 제휴카드 안내">
+                        <h3>부산IT 제휴카드 안내</h3>
+                        <p>최대 2만원 캐시백 이벤트</p>
+                    </li>
+                    <li class="notice-item">
+                        <img src="gift_card.jpg" alt="모바일카드 상품권 1만원">
+                        <h3>부산IT 모바일카드 상품권 1만원</h3>
+                        <p>모바일카드 신규 발급 시</p>
+                    </li>
+                </ul>
+                <a href="#" class="more-button">더보기 &gt;</a>
+            </div>
+        </section>
+        <section class="customer-service-section">
+            <div class="container">
+                <h2>고객문의</h2>
+                <ul>
+                    <li>
+                        <span>도서/음반</span>
+                        <a href="tel:0000-0000">0000-0000</a>
+                    </li>
+                    <li>
+                        <span>중고샵</span>
+                        <a href="tel:0000-0000">0000-0000</a>
+                    </li>
+                    <li>
+                        <span>티켓예매</span>
+                        <a href="tel:1234-1234">1234-1234</a>
+                    </li>
+                    <li>
+                        <a href="#">eBook 1:1 문의 &gt;</a>
+                    </li>
+                </ul>
+                <div class="buttons">
+                    <button>1:1 문의하기 &gt;</button>
+                    <button>자주 묻는 질문 &gt;</button>
+                    <button>상담시간 안내 &gt;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="company-info">
+                    <h3>베스킨라빈스31.2(주)</h3>
+                    <p>대표: 최기근</p>
+                    <p>사업자등록번호: 000-00-00000</p>
+                    <p>통신판매업신고: 제 0000-0000호</p>
+                    <address>부산 수영구 광남로 70</address>
+                    <p>Copyright © 베스킨라빈스31.2 Corp. All Rights Reserved.</p>
+                </div>
+                <div class="customer-service">
+                    <h3>고객센터</h3>
+                    <p>0000-0000 (유료)</p>
+                    <p>365일 09:00 ~ 18:00</p>
+                    <p>점심시간 12:00 ~ 13:00</p>
+                    <p><a href="#">1:1 문의하기</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -15,7 +15,7 @@
             <section class="register-result">
                 <h2>판매 등록이 완료되었습니다.</h2>
                 <p>도서가 성공적으로 등록되었습니다.</p>
-                <a href="/test/used/used_books.jsp">홈으로 돌아가기</a>
+                <a href="/test/used/index.jsp">홈으로 돌아가기</a>
             </section>
         </div>
     </main>

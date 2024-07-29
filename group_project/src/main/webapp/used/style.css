@@ -1,0 +1,314 @@
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	background-color: burlywood;
+	color: #333;
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+header {
+	background-image: url("images/header-background.jpg");
+	background-size: cover;
+	background-position: center;
+	min-height: 300px;
+	color: black;
+	padding: 10px 0;
+	text-align: center;
+}
+
+
+
+.header {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.header h1 {
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+}
+
+.header p {
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+}
+.category {
+	flex-wrap: wrap;
+	/* 줄바꿈 */
+	list-style: none;
+	padding: 0;
+	margin-bottom: 20px;
+	 display: flex; 
+	position: absolute;
+	left: 20px;
+
+}
+
+@media screen and (max-width:1540px) {
+
+	.category {
+		position: static;
+	}
+}
+
+.category h2 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	width: 100%;
+	/* 제목이 전체 너비를 차지하도록 */
+	text-align: center;
+	/* 제목 가운데 정렬 */
+}
+
+.category-item {
+	 margin: 0 15px; /* 항목 간 간격 */
+    flex: 1 1 calc(25% - 30px); /* 4개씩 한 줄에 표시, 간격 조절 */
+	box-sizing: border-box;
+	
+}
+
+.category-item a {
+	  text-decoration: none;
+    color: #333; 
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.category-item,
+.active a {
+	color: black;
+	border-bottom: 2px solid black;
+}
+
+.category ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.category-title {
+	background: none;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.arrow {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 5px;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+	transition: transform 0.3s ease;
+}
+
+.arrow.down {
+	transform: rotate(0deg);
+}
+
+.arrow.up {
+	transform: rotate(180deg);
+}
+
+.subcategory {
+	list-style: none;
+	border-radius: 5px;
+	padding: 10px 0;
+	margin: 0;
+	display: block;
+	position: absolute;
+	/* 메인 메뉴에 상대적인 위치 */
+	top: 100%;
+	/* 메인 메뉴 바로 아래에 배치 */
+	left: 0;
+	z-index: 10;
+	background-color: white;
+	/* 흰색 배경 */
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	/* 그림자 */
+	z-index: 10;
+	/* 다른 요소 위에 표시 */
+}
+.subcategory-list {
+    display: none;
+}
+
+.subcategory-list.show {
+    display: block;
+}
+
+.category-item:hover .subcategory {
+	display: block;
+	/* 메인 메뉴에 hover 시 서브 메뉴 표시 */
+}
+
+.subcategory-list {
+	display: none;
+	padding-left: 20px;
+	position: relative;
+	background-color: rgba(255, 255, 255, 0.8);
+	width: 100%;
+}
+
+.subcategory-list li {
+	margin-bottom: 5px;
+	/* 서브 카테고리 간격 */
+}
+
+.subcategory-list.active {
+	display: block;
+}
+
+.subcategory-item a {
+	text-decoration: none;
+	color: #555;
+	display: block;
+	padding: 8px 15px;
+}
+
+
+
+.subcategory-item a:hover {
+	background-color: #f5f5f5;
+}
+
+.used-book-upload {
+	background-color: white;
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.used-book-upload h2 {
+	margin-top: 0;
+}
+
+.upload_desc p {
+	margin-bottom: 20px;
+}
+
+.form-row {
+	margin-bottom: 15px;
+}
+
+.form-row label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"],
+.form-row textarea,
+.form-row select {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid white;
+	border-radius: 4px;
+}
+
+
+.book-info {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.book-image {
+	margin-right: 20px;
+}
+
+.book-image img {
+	max-width: 150px;
+	height: auto;
+}
+
+/* 판매 정보 스타일 */
+.selling-info {
+	text-align: center;
+}
+
+.selling-options {
+	display: flex;
+	justify-content: center;
+}
+
+.selling-option {
+	margin: 0 15px;
+}
+
+.selling-option img {
+	max-width: 100px;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+/* 인기 중고도서 상품 스타일 */
+.book-item {
+	border: 1px solid #ddd;
+	/* 테두리 추가 */
+	padding: 15px;
+	margin-bottom: 20px;
+	text-align: center;
+	transition: box-shadow 0.3s ease;
+	/* 호버 효과를 위한 transition 추가 */
+}
+
+.book-item img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+
+/* 스페셜 섹션 스타일 */
+.special-section {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30px;
+	flex-wrap: wrap;
+	/* 화면 크기에 따라 줄바꿈 */
+}
+
+.special-item {
+	text-align: center;
+	width: 30%;
+	padding: 20px;
+	border: 1px solid red;
+	border-radius: 8px;
+	width: calc(33.33% - 20px);
+	/* 3개씩 한 줄, 간격 조절 */
+	box-sizing: border-box;
+	/* padding, border 포함 */
+}
+
+.special-item img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 10px;
+}
+
+div.category {
+	position: absolute;
+	left: 50px;
+}
+
+@media screen and (max-width:1600px) {
+	div.category {
+		position: static;
+	}
+}

@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="sessionScope"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="test"/>
-			<item value="used-book-form"/>
-			<item value="submitBtn"/>
-			<item value="&lt;c:forEach var=&quot;book&quot; items=&quot;${currentBooks}&quot;&gt;"/>
-			<item value="fetchBookInfo"/>
-			<item value="검색"/>
-			<item value="displayBookInfo"/>
-			<item value="var=&quot;result&quot;"/>
-			<item value="reu"/>
-			<item value="페이지당 헌책방 수"/>
-			<item value="jdbc/baskin"/>
-			<item value="recommended-stores"/>
-			<item value="$"/>
-			<item value="exam"/>
-			<item value="com."/>
+			<item value="sessionScope"/>
+			<item value="imagePath"/>
+			<item value="moveDetail"/>
+			<item value="Used_Books"/>
+			<item value="localhost"/>
+			<item value="/group_project/"/>
+			<item value="${pageContext.request.contextPath}/LoginServlet"/>
+			<item value="selling-info"/>
+			<item value="book-info"/>
+			<item value="form-row"/>
+			<item value="arrow"/>
+			<item value="menu"/>
+			<item value="slogan"/>
+			<item value="header"/>
+			<item value="container"/>
 		</list>
 		<list key="replacehistory">
+			<item value="books"/>
+			<item value="10.100.205.92"/>
+			<item value="${pageContext.request.contextPath}/"/>
 			<item value="/"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1160"/>
-		<item key="DIALOG_Y_ORIGIN" value="62"/>
+		<item key="DIALOG_X_ORIGIN" value="1341"/>
+		<item key="DIALOG_Y_ORIGIN" value="260"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

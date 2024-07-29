@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>main</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>JoinServlet</servlet-name>
+    <servlet-class>servlet.JoinServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JoinServlet</servlet-name>
+    <url-pattern>/JoinServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CheckPwServlet</servlet-name>
+    <servlet-class>servlet.CheckPwServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckPwServlet</servlet-name>
+    <url-pattern>/CheckPwServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChangePwServlet</servlet-name>
+    <servlet-class>servlet.ChangePwServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChangePwServlet</servlet-name>
+    <url-pattern>/ChangePwServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SecedeServlet</servlet-name>
+    <servlet-class>servlet.SecedeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecedeServlet</servlet-name>
+    <url-pattern>/SecedeServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>booksUpload</servlet-name>
+  	<jsp-file>/insert_check.jsp</jsp-file>
+  	<multipart-config>
+  		<location>c:\\Temp</location>
+  		<max-file-size>10485760</max-file-size>
+  		<max-request-size>52428800</max-request-size>
+  		<file-size-threshold>1048576</file-size-threshold>
+  	</multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>booksUpload</servlet-name>
+  	<url-pattern>/insert_check.jsp</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  	<servlet-name>booksUpdate</servlet-name>
+  	<jsp-file>/book_update_check.jsp</jsp-file>
+  	<multipart-config>
+  		<location>c:\\Temp</location>
+  		<max-file-size>10485760</max-file-size>
+  		<max-request-size>52428800</max-request-size>
+  		<file-size-threshold>1048576</file-size-threshold>
+  	</multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>booksUpdate</servlet-name>
+  	<url-pattern>/book_update_check.jsp</url-pattern>
+  </servlet-mapping>
+</web-app>

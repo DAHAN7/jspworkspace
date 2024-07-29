@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+table {
+    width: 1000px;
+}
+
+th {
+    position: sticky;
+    font-size: 15px;
+    background: rgb(210, 210, 210);
+    height: 40px;
+}
+
+td {
+    font-size: 14px;
+    background: #fff;
+    height: 40px;
+}
+
+.ellipsis {
+    white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+    overflow: hidden; /* 넘치는 텍스트를 숨김 */
+    text-overflow: ellipsis; /* 넘치는 텍스트를 ...으로 표시 */
+}
+.num {
+	width: 40px;
+	max-width: 40px;
+	text-align: center;
+}
+.name {
+	width: 40px;
+	max-width: 40px;
+}
+.id {
+	width: 70px;
+	max-width: 70px;
+}
+.email {
+	width: 130px;
+	max-width: 130px;
+}
+.phone {
+	width: 85px;
+	max-width: 85px;
+}
+.birth {
+	width: 85px;
+	max-width: 85px;
+	text-align: center;
+}
+.addr {
+	width: 240px;
+	max-width: 240px;
+}
+.gender {
+	width: 40px;
+	max-width: 40px;
+	text-align: center;
+}
+.point {
+	width: 60px;
+	max-width: 60px;
+	text-align: center;
+}
+.type {
+	width: 50px;
+	max-width: 50px;
+	text-align: center;
+}
+.visit {
+	width: 120px;
+	max-width: 120px;
+}
+.edit {
+	width: 40px;
+	max-width: 40px;
+	text-align: center;
+}
+
+.wrapper {
+    width: 1000px;
+    margin: auto;
+}
+
+.wrapper .upperBox {
+    background: skyblue;
+    width: 1000px;
+    height: 60px;
+    margin-top: 100px;
+}
+
+#edit, #seller {
+    text-align: center;
+}
+
+#mNum, #mName, #mId, #mEmail, #mPhone, #mAddr, #currentJoin {
+    padding-left: 7px;
+}
+
+.upperBox p {
+	text-align: center;
+	font-size: 40px;
+	font-weight: 700;
+	margin: auto;	
+}
+
+#paging {
+	text-align: center;
+}

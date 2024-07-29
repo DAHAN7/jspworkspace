@@ -1,0 +1,118 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(230, 230, 230);
+}
+
+footer {
+    text-align: center;
+}
+
+footer span {
+    font-weight: 600;
+}
+
+.wrapper {
+    padding: 100px 150px;
+    width: 1000px;
+    margin: auto;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.wrapper .innerWrapper {
+    background: #fff;
+    width: 500px;
+    margin: auto;
+}
+
+.innerWrapper .email, .innerWrapper .phone {
+    border: 1px solid rgba(0, 0, 0, .2);
+    margin: 15px 0 0 0;
+    height: 50px;
+    font-size: 21px;
+    padding-left: 20px;
+    padding-top: 10px;
+    font-weight: 600;
+}
+
+.innerWrapper .email, .innerWrapper .phone:hover {
+    cursor: pointer;
+}
+
+.input_info {
+    padding: 30px 30px 30px 30px;
+    display: none;
+    background: rgb(230, 230, 230);
+}
+
+.input_info .name, .input_info .number {
+    height: 40px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.input_info .btn {
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    background: #f58;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.input_info .send {
+    width: 150px;
+    height: 40px;
+    background: skyblue;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.input_info .phoneNum, .input_info .emailAddr {
+    width: 284px;
+    height: 40px;
+    margin-bottom: 15px;
+    padding-left: 15px;
+}
+
+.phoneNum {
+	display: inline-block;
+}
+
+.wrapper .sign {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .2);
+    margin: 50px;
+}
+
+.email .arrow_down {
+    left: 30px;
+}

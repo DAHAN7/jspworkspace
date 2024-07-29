@@ -1,0 +1,216 @@
+/* 전체적인 스타일 설정 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* 헤더와 푸터 스타일 설정 */
+header, footer {
+    background-color: #76c7c0; /* 밝은 파란색 */
+    color: white;
+    padding: 10px 20px;
+}
+
+/* Footer 스타일 설정 */
+footer {
+    background-color: #76c7c0; /* 밝은 파란색 */
+    color: white;
+    padding: 10px 20px;
+    text-align: center; /* 텍스트를 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* Flexbox를 사용하여 컨텐츠 중앙 정렬 */
+    align-items: center; /* Flexbox를 사용하여 수직 중앙 정렬 */
+    position: relative;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    margin-bottom: 10px; /* h1과 nav의 간격 */
+}
+
+header nav {
+    width: auto; /* 자동 너비 조정 */
+    display: flex;
+    justify-content: center;
+    background-color: #76c7c0; /* 헤더와 같은 색상 */
+    padding: 0 20px; /* 좌우 여백 추가 */
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+header nav ul li {
+    margin: 0 15px; /* 좌우 간격 */
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: block; /* 클릭 가능한 영역을 확장 */
+}
+
+header nav ul li a:hover {
+    background-color: #f7a1c4; /* 밝은 분홍색 */
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* nav와의 간격 */
+}
+
+.search-form select, .search-form input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 5px 10px;
+    background-color: #f7a1c4; /* 밝은 분홍색 */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+/* 컨테이너 스타일 설정 */
+.container {
+    display: flex;
+    flex: 1;
+}
+
+/* 네비게이션 스타일 설정 */
+nav {
+    background-color: #8cd4d0; /* 5% 더 밝은 파란색 */
+    width: 200px;
+    padding-top: 20px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 중앙 정렬 */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center; /* 중앙 정렬 */
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+/* 메인 콘텐츠 스타일 설정 */
+.content {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.request-button {
+    position: absolute;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #f7a1c4; /* 밝은 분홍색 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.request-button.top {
+    top: 20px;
+}
+
+.request-button.bottom {
+    bottom: 20px;
+}
+
+/* 테이블 스타일 설정 */
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 60px; /* 추가적인 마진을 줘서 버튼과 겹치지 않게 함 */
+    text-align: center;
+}
+
+.board-table th, .board-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.board-table th {
+    background-color: #76c7c0; /* 밝은 파란색 */
+    color: white;
+}
+
+.board-table td {
+    background-color: white;
+}
+
+/* 페이징 스타일 설정 */
+tfoot td {
+    padding: 10px;
+    text-align: center; /* td 안의 콘텐츠를 중앙 정렬 */
+}
+
+tfoot a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: #76c7c0; /* 밝은 파란색 */
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+}
+
+tfoot a:hover {
+    background-color: #76c7c0; /* 밝은 파란색 */
+    color: white;
+    border-color: #76c7c0; /* 밝은 파란색 */
+}
+
+tfoot a.disabled {
+    color: #bdc3c7;
+    cursor: not-allowed;
+    background-color: #f9f9f9;
+    border-color: #bdc3c7;
+}
+
+tfoot tr {
+    text-align: center;
+}

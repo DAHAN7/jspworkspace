@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 800px;
+}
+
+.wrapper p {
+    font-size: 12px;
+}
+
+.wrapper .star {
+    color: blue;
+}
+
+.wrapper span {
+    font-size: 11px;
+    color:  gray;
+}
+
+.wrapper td {
+    height: 60px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .input-box {
+    width: 300px;
+}
+
+.wrapper #input_box_id {
+	width: 300px;
+	background: rgba(80, 80, 80, 0.5);
+}
+
+.wrapper input {
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.wrapper #input_email {
+    width: 300px;
+}
+
+.wrapper .input-phoneNumber {
+    width: 88px;
+}
+
+.wrapper .firstbox {
+    width: 300px;
+}
+
+.wrapper select {
+    margin-left: 15px;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #f58;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn:hover, #addrBtn:hover {
+    filter: brightness(0.9);
+}
+
+.tail {
+    margin: 20px 250px;
+}
+
+.wrapper #check {
+    margin: -20px 0px 20px 15px;
+    width: 100px;
+    height: 25px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: gray;
+    color: #fff;
+    font-weight: 500;
+}
+
+.wrapper #detailAddr {
+    margin-top: 20px;
+    width: 300px;
+}
+
+.wrapper #zipcode {
+    margin-top: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.wrapper #road {
+    margin-top: 20px;
+    width: 300px;
+}
+
+.td_relative {
+    position: relative;
+}
+
+.innerZip {
+    position: absolute;
+    left: 7px;
+}
+
+.innerRoad {
+	position: absolute;
+	left: 7px;
+	top: 48px;
+}
+
+.innerDetail {
+	position: absolute;
+	left: 7px;
+	top: 92px
+}
+
+.seller_table {
+	position: relative;
+}
+
+.seller_chk {
+	position: absolute;
+	left: 0;
+	top: 37px;
+}
+
+#addrBtn {
+	width: 100px;
+    height: 25px;
+    background: skyblue;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 12px;
+    color: #fff;
+    font-weight: 600;
+    padding: 0;
+    margin-left: 11px;
+}
+
+[type="radio"], .radio_span {
+  vertical-align: middle;
+}
+
+label {
+  font-size: 18px;
+  line-height: 2rem;
+  padding: 0.2em 0.4em;
+}
+
+label > span:hover, [type="radio"]:hover {
+  cursor: pointer;
+}

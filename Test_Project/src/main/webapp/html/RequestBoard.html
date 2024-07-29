@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 신청 목록</title>
+    <style>
+        /* styles.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        header, footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-form input {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .search-form button {
+            padding: 5px 10px;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: #34495e;
+            width: 200px;
+            padding-top: 20px;
+            flex-shrink: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 20px 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            position: relative;
+        }
+
+        .book-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .book-item {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: calc(33.333% - 40px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+        }
+
+        .request-button {
+            position: absolute;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .request-button.top {
+            top: 20px;
+        }
+
+        .request-button.bottom {
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>도서 신청 목록</h1>
+        <form action="#" method="get" class="search-form">
+            <input type="text" name="search" placeholder="도서 검색">
+            <button type="submit">검색</button>
+        </form>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">신규 도서</a></li>
+                <li><a href="#">베스트셀러</a></li>
+                <li><a href="#">카테고리</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            
+            <div class="book-list">
+                <div class="book-item">
+                    <img src="book-cover1.jpg" alt="Book Cover 1">
+                    <h3>도서 제목 1</h3>
+                    <p>저자 1</p>
+                    <p>출판사 1</p>
+                    <p>출판 연도: 2023</p>
+                </div>
+                <div class="book-item">
+                    <img src="book-cover2.jpg" alt="Book Cover 2">
+                    <h3>도서 제목 2</h3>
+                    <p>저자 2</p>
+                    <p>출판사 2</p>
+                    <p>출판 연도: 2022</p>
+                </div>
+                <div class="book-item">
+                    <img src="book-cover2.jpg" alt="Book Cover 2">
+                    <h3>도서 제목 2</h3>
+                    <p>저자 2</p>
+                    <p>출판사 2</p>
+                    <p>출판 연도: 2022</p>
+                </div>
+                <div class="book-item">
+                    <img src="book-cover2.jpg" alt="Book Cover 2">
+                    <h3>도서 제목 2</h3>
+                    <p>저자 2</p>
+                    <p>출판사 2</p>
+                    <p>출판 연도: 2022</p>
+                </div>
+                <div class="book-item">
+                    <img src="book-cover2.jpg" alt="Book Cover 2">
+                    <h3>도서 제목 2</h3>
+                    <p>저자 2</p>
+                    <p>출판사 2</p>
+                    <p>출판 연도: 2022</p>
+                </div>
+                <!-- 추가 도서 항목 -->
+            </div>
+            <button class="request-button bottom">도서 신청</button>
+        </main>
+    </div>
+    
+    <footer>
+        <p>&copy; 베스킨라빈스31.2</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wrapper {
+	margin-left: 50px;
+    width: 800px;
+}
+
+#upperbox {
+    height: 110px;
+    margin: 45px 0px 0px;
+}
+
+#upperbox > p {
+    display: inline-block;
+    font-size: 46px;
+}
+
+#upperbox > span {
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+    padding-left: 12px;
+}
+
+#lowerbox {
+    height: 160px;
+}
+
+#innerbox1 {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#innerbox1 > p > span {
+    font-weight: 900;
+}
+
+#innerbox1 > p {
+    text-align: center;
+}
+
+#innerbox2 {
+    height: 160px;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#innerbox2 > p {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+#innerbox2 > input[type=password] {
+    width: 300px;
+    height: 40px;
+    margin-right: 10px;
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+#innerbox2 > input[type=text] {
+    width: 300px;
+    height: 40px;
+    margin-right: 10px;
+    padding-left: 10px;
+    font-size: 30px;
+}
+
+#innerbox2 > input[type=submit] {
+    width: 120px;
+    height: 40px;
+    font-size: 24px;
+    color: #fff;
+    background: #f58;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+#innerbox2 > input[type=button] {
+    width: 120px;
+    height: 40px;
+    font-size: 24px;
+    color: #fff;
+    background: #f58;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+}
+
+nav {
+    width: 200px;
+    padding-top: 20px;
+    flex-shrink: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li.title {
+    margin: 20px 0;
+    border-bottom: 1px solid gray;
+}
+
+nav ul li p {
+	font-size: 25px;
+    text-decoration: none;
+    padding: 10px 10px;
+    display: block;
+}
+
+nav ul li a {
+	color: gray;
+	font-size: 20px;
+	font-weight: 600;
+    text-decoration: none;
+    padding: 10px 10px;
+    display: block;
+}
