@@ -158,20 +158,86 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public boolean memberUpdate(MemberDTO member) {
-		// TODO Auto-generated method stub
+		this.setConnection();
+		String sql = "UPDATE mvc_member SET pass = ?, name = ?, age = ?, gender = ?, "
+				   + "updatedate = now() WHERE id = ? ";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getPass());
+			pstmt.setString(2, member.getName());
+			pstmt.setInt(3, member.getAge());
+			pstmt.setString(4, member.getGender());
+			pstmt.setString(5, member.getId());
+			
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.close();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean deleteMember(int num) {
-		// TODO Auto-generated method stub
+		this.setConnection();
+		
+		String sql = "DELETE FROM mvc_member WHERE num = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			int result = pstmt.executeUpdate();
+			
+			if(result == 1) return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return false;
 	}
 
 	@Override
 	public MemberDTO getMemberById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		MemberDTO member = null;
+		this.setConnection();
+		
+		String sql = "SELECT * FROM mvc_member WHERE id = ?";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member = new MemberDTO(
+					rs.getInt(1),				// num
+					rs.getString(2),			// id
+					rs.getString(3),			// pass
+					rs.getString(4),			// name
+					rs.getInt(5),				// age
+					rs.getString(6),			// gender
+					rs.getTimestamp(7),			// regdate
+					rs.getTimestamp(8)			// updatedate
+				);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			this.close();
+		}
+		
+		return member;
 	}
 
 }
+
+
+

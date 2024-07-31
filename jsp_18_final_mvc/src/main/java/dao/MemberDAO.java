@@ -37,8 +37,20 @@ public interface MemberDAO {
 	/**
 	 * id로 회원 정보 검색 - 자동 로그인
 	 * @param id - 테이블에서 검색할 회원 id
-	 * @return id가 일치하는 회원의 행정보를 저장할 객체
-	 * @return null - 일치하는 회원정보 없음
+	 * @return MemberDTO - id 가 일치하는 회원의 행정보를 저장할 객체
+	 * @return null - 일치하는 회원정보 없음        
 	 */
 	MemberDTO getMemberById(String id);
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -25,8 +25,3 @@
 	<h4>application id : <%= application.getAttribute("appId") %></h4>
 </body>
 </html>
-
-
-
-
-

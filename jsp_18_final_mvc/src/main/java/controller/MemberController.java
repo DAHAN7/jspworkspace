@@ -41,6 +41,27 @@ public class MemberController extends HttpServlet{
 			nextPage = "/member/join.jsp";
 		}
 		
+		if(command.equals("/logOut.mc")) {
+			System.out.println(" 로그아웃 요청 처리 ");
+			ms.logOut(req, resp);
+			resp.sendRedirect(contextPath+"/login.mc");
+		}
+		
+		if(command.equals("/info.mc")) {
+			// 회원 정보 페이지 요청
+			nextPage = "/member/info.jsp";
+		}
+		
+		if(command.equals("/update.mc")) {
+			// 회원정보 수정 페이지 요청
+			nextPage = "/member/update.jsp";
+		}
+		
+		if(command.equals("/withdraw.mc")) {
+			// 회원 탈퇴 요청
+			nextPage = "/member/withdraw.jsp";
+		}
+		
 		
 		if(nextPage != null) {
 			RequestDispatcher rd = req.getRequestDispatcher(nextPage);
@@ -80,6 +101,16 @@ public class MemberController extends HttpServlet{
 				req.setAttribute("msg", "로그인 실패");
 				nextPage = "/member/login.jsp";
 			}
+		} // login.mc
+		
+		if(command.equals("update.mc")) {
+			// 작성된 내용으로 회원 정보 수정 요청 처리
+			ms.memberUpdate(req, resp);
+		}
+		
+		if(command.equals("withdrawSubmit.mc")) {
+			// 회원 탈퇴 요청 처리
+			ms.withdraw(req, resp);
 		}
 		
 		if(nextPage != null) {
@@ -90,3 +121,20 @@ public class MemberController extends HttpServlet{
 	} // end doPost
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
