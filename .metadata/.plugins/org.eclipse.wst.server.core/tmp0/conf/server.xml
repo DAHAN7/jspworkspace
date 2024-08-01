@@ -143,7 +143,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_18_final_mvc\src\main\webapp" path="/jsp_18_final_mvc" reloadable="true" source="org.eclipse.jst.jee.server:jsp_18_final_mvc"><Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_18_final_mvc\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
+      <Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\integrated_implementation\src\main\webapp" path="/integrated_implementation" reloadable="true" source="org.eclipse.jst.jee.server:integrated_implementation"><Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\integrated_implementation\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
     </Engine>
   </Service>
 </Server>

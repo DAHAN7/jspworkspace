@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="님"/>
 			<item value="BookServlet"/>
 			<item value="sessionScope"/>
 			<item value="imagePath"/>
@@ -22,7 +23,6 @@
 			<item value="arrow"/>
 			<item value="menu"/>
 			<item value="slogan"/>
-			<item value="header"/>
 		</list>
 		<list key="replacehistory">
 			<item value="books"/>

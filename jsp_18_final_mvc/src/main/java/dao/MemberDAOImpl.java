@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import dto.MemberDTO;
 
@@ -16,7 +17,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	public void setConnection() {
 		try {
-			// DriverClass load
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(
 				"jdbc:mysql://localhost:3306/digital_jsp",
@@ -64,11 +64,14 @@ public class MemberDAOImpl implements MemberDAO {
 		setConnection();
 		
 		// 중복 아이디 확인
-		String sql = "SELECT * FROM mvc_member WHERE id = ?";
+		String sql = "SELECT * FROM mvc_member WHERE id = ?"
+					+ " UNION "
+					+ "SELECT * FROM mvc_member_backup WHERE id = ?";
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getId());
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -186,19 +189,55 @@ public class MemberDAOImpl implements MemberDAO {
 	public boolean deleteMember(int num) {
 		this.setConnection();
 		
-		String sql = "DELETE FROM mvc_member WHERE num = ?";
-		
 		try {
+			String sql = "DELETE FROM mvc_member WHERE num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			int result = pstmt.executeUpdate();
 			
 			if(result == 1) return true;
 			
+			/*
+			String sql = "SELECT * FROM mvc_member WHERE num = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String id = rs.getString("id");
+				String pass = rs.getString("pass");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				String gender = rs.getString("gender");
+				Timestamp regdate = rs.getTimestamp("regdate");
+				
+				sql = "INSERT INTO mvc_member_backup VALUES(?,?,?,?,?,?,?,now())";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				pstmt.setString(2, id);
+				pstmt.setString(3, pass);
+				pstmt.setString(4, name);
+				pstmt.setInt(5, age);
+				pstmt.setString(6, gender);
+				pstmt.setTimestamp(7, regdate);
+				
+				int result = pstmt.executeUpdate();
+				
+				if(result == 1){
+					sql = "DELETE FROM mvc_member WHERE num = ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, num);
+					result = pstmt.executeUpdate();
+					
+					if(result == 1) return true;
+				}
+			}
+			*/
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			this.close();
 		}
-		
 		return false;
 	}
 

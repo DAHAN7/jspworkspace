@@ -67,8 +67,8 @@ public class CheckCookieFilter extends HttpFilter implements Filter {
 					if(encoding){
 						// encoding 사용으로 지정되었을 경우
 						byte[] bytes = Base64.getDecoder().decode(id.getBytes());
-						id=new String(bytes);
-						System.out.println(" Filter decoding id - " + id);
+						id = new String(bytes);
+						System.out.println("Filter decoding id - " + id);
 					}
 					
 					// aWQwMDE=
