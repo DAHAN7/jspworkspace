@@ -47,7 +47,8 @@
 	</div>
 	<div style="overflow:visible">
 		<ul>
-			<li><a href="">공지사항</a></li>
+			<!-- board/notice/notice_list.jsp 페이지로 이동 -->
+			<li><a href="notice.do">공지사항</a></li>
 			<li><a href="">질문과답변</a></li>
 		</ul>
 	</div>
