@@ -220,7 +220,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	@Override
 	public ArrayList<NoticeVO> getSearchNoticeList(PageMaker pm) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

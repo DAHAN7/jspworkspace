@@ -2,14 +2,18 @@ package dao;
 
 import java.util.ArrayList;
 
-import util.Criteria;
 import util.PageMaker;
 import vo.NoticeVO;
 
+/**
+ * notice_board table 관련 요청 처리
+ * notice_board DataBase Access Object
+ */
 public interface NoticeDAO {
 	
 	/**
-	 * @return ArrayList<NoticeVO> notice_board table에 저장된 모든 행정보를 List에 저장하여 반환
+	 * @return ArrayList<NoticeVO> notice_board table에 
+	 * 	       저장된 모든 행정보를 List에 저장하여 반환
 	 */
 	ArrayList<NoticeVO> getAllList();
 
@@ -61,6 +65,6 @@ public interface NoticeDAO {
 	 * @param pageMaker - 게시글 검색에 필요한 정보를 저장
 	 * @return - ArrayList<NoticeVO> 검색된 게시글 목록을 리스트에 저장하여 반환
 	 */
-	   ArrayList<NoticeVO> getSearchNoticeList(PageMaker pm);
+	ArrayList<NoticeVO> getSearchNoticeList(PageMaker pageMaker);
 
-	}
+}
