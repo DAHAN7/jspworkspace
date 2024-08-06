@@ -121,20 +121,3 @@ public class MemberController extends HttpServlet{
 	} // end doPost
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
