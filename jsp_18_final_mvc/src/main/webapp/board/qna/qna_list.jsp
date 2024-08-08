@@ -21,6 +21,7 @@
 			<th>작성시간</th>
 			<th>조회수</th>
 			<th>Ref</th>
+			<th>정렬</th>
 		</tr>
 		<c:choose>
 			<c:when test="${!empty boardList}">
@@ -34,6 +35,7 @@
 						<td>${board.qnaDate}</td>
 						<td>${board.qnaReadCount}</td>
 						<td>${board.qnaReRef}</td>
+						<td>${board.qnaReSeq}</td>
 					</tr>
 				</c:forEach>
 				<!-- 페이징 블럭 -->

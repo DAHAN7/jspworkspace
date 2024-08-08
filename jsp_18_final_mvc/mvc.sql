@@ -61,6 +61,9 @@ CREATE TABLE qna_board(
 
 ALTER TABLE qna_board ADD COLUMN qna_re_ref INT NOT NULL DEFAULT 0; -- 원본글 번호
 
+ALTER TABLE qna_board 
+ADD COLUMN qna_re_seq INT NOT NULL DEFAULT 0 AFTER qna_re_ref; 		-- 답변글 정렬 번호
+
 DESC qna_board;
 
 
@@ -75,7 +78,8 @@ SELECT
 	Q.qna_writer_num AS qnaWriterNum,
 	Q.qna_readcount AS qnaReadCount,
 	Q.qna_date AS qnaDate,
-	Q.qna_re_ref AS qnaReRef
+	Q.qna_re_ref AS qnaReRef,
+	Q.qna_re_seq AS qnaReSeq
 FROM qna_board AS Q JOIN mvc_member AS M 
 ON Q.qna_writer_num = M.num;
 
@@ -97,13 +101,13 @@ UPDATE v_qna_board SET qnaReRef = qnaNum;
 commit;
 
 INSERT INTO v_qna_board(qnaTitle, qnaContent,qnaWriterNum) 
-VALUES('내일 비오나요? 냉무','제곧내',6);
+VALUES('내일 비오나요?진짜 진짜 냉무','제곧내',6);
 
 SELECT LAST_INSERT_ID();
 
-
-UPDATE v_qna_board SET qnaReRef=LAST_INSERT_ID();
+UPDATE v_qna_board SET qnaReRef = LAST_INSERT_ID() 
 WHERE qnaNum = LAST_INSERT_ID();
+
 commit;
 
 

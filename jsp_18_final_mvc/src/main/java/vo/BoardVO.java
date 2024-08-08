@@ -12,7 +12,14 @@ public class BoardVO {
 	private int qnaReadCount;
 	private Date qnaDate;
 	private int qnaReRef;			// 원본 글 번호 추가
+	private int qnaReSeq;			// 답변 글 정렬 번호 추가
 	
+	public int getQnaReSeq() {
+		return qnaReSeq;
+	}
+	public void setQnaReSeq(int qnaReSeq) {
+		this.qnaReSeq = qnaReSeq;
+	}
 	public int getQnaReRef() {
 		return qnaReRef;
 	}

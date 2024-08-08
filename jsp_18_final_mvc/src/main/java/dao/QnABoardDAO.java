@@ -21,10 +21,12 @@ public class QnABoardDAO {
 		
 		conn = DBCPUtil.getConnection();
 		
-		String sql = " INSERT INTO qna_board(qna_title,qna_content,qna_writer_num) "
+		String sql = " INSERT INTO v_qna_board(qnaTitle,qnaContent,qnaWriterNum) "
 					+" VALUES(?,?,?)";
 		
 		try {
+			conn.setAutoCommit(false);			
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, qna_title);
 			pstmt.setString(2, qna_content);
@@ -32,12 +34,29 @@ public class QnABoardDAO {
 			
 			int result = pstmt.executeUpdate();
 			
-			if(result == 1) return true;
+			if(result == 1) {
+				
+				sql = " UPDATE v_qna_board SET qnaReRef = LAST_INSERT_ID() "
+					+ " WHERE qnaNum = LAST_INSERT_ID() ";
+				pstmt = conn.prepareStatement(sql);
+				result = pstmt.executeUpdate();
+				if(result == 1) {
+					conn.commit();
+					return true;
+				}
+			}
+			
+			conn.rollback();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {}
 		} finally {
 			DBCPUtil.close(pstmt, conn);
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {}
 		}
 		return false;
 	} // end noticeWrite method
@@ -48,7 +67,7 @@ public class QnABoardDAO {
 		
 		conn = DBCPUtil.getConnection();
 		
-		String sql = "SELECT * FROM v_qna_board ORDER BY qnaReRef DESC";
+		String sql = "SELECT * FROM v_qna_board ORDER BY qnaReRef DESC, qnaReSeq ASC";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -103,6 +122,7 @@ public class QnABoardDAO {
 		board.setQnaReadCount(rs.getInt("qnaReadCount"));
 		board.setQnaDate(rs.getTimestamp("qnaDate"));
 		board.setQnaReRef(rs.getInt("qnaReRef")); // 원본 글 번호 추가
+		board.setQnaReSeq(rs.getInt("qnaReSeq")); // 답변 글 정렬 번호 추가
 		return board;
 	}
 
@@ -173,21 +193,42 @@ public class QnABoardDAO {
 		
 		conn = DBCPUtil.getConnection();
 		
-		String sql = "INSERT INTO v_qna_board(qnaTitle, qnaContent, qnaWriterNum, qnaReRef) "
-					+ " VALUES(?,?,?,?)";
+	
 		
 		try {
+			String seqSql = "UPDATE v_qna_board SET qnaReSeq = qnaReSeq + 1 "
+						+ " WHERE qnaReRef = ? AND qnaReSeq > ?";
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(seqSql);
+			pstmt.setInt(1, vo.getQnaReRef());
+			pstmt.setInt(2, vo.getQnaReSeq());
+			
+			pstmt.executeUpdate();
+			
+			String sql = "INSERT INTO v_qna_board("
+					+ "qnaTitle, qnaContent, qnaWriterNum, qnaReRef, qnaReSeq) "
+						+ " VALUES(?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getQnaTitle());
 			pstmt.setString(2, vo.getQnaContent());
 			pstmt.setInt(3, vo.getQnaWriterNum());
 			pstmt.setInt(4, vo.getQnaReRef());
+			pstmt.setInt(5, vo.getQnaReSeq() + 1);
 			
 			pstmt.executeUpdate();
+			
+			conn.commit();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {}
 		} finally {
+			try {
+				conn.setAutoCommit(true);
+			} catch (SQLException e) {}
 			DBCPUtil.close(pstmt, conn);
+			
 		}
 	}
 
