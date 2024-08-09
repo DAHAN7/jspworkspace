@@ -54,7 +54,7 @@ public class MemberDAOImpl implements MemberDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} 
+		}  
 		
 		// Connection 객체 닫기
 		if(conn != null) {

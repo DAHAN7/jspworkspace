@@ -8,6 +8,7 @@
 		<input type="hidden" name="qnaWriterNum" value="${member.num}"/>
 		<input type="hidden" name="qnaReRef" value="${board.qnaReRef}"/>
 		<input type="hidden" name="qnaReSeq" value="${board.qnaReSeq}"/>
+		<input type="hidden" name="qnaReLev" value="${board.qnaReLev}"/>
 		<table>
 			<tr>
 				<th colspan="2"><h1>답변 글 작성</h1></th>
@@ -38,7 +39,3 @@
 	</form>
 </section>
 <jsp:include page="/common/footer.jsp"/>
-
-
-
-

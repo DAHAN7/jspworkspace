@@ -27,11 +27,18 @@ public class QnAController extends HttpServlet{
 		
 		String nextPage = null;
 		
+		if(command.equals("boardListPage.qna")) {
+			ArrayList<BoardVO> boardList = service.boardPageList(request);
+			request.setAttribute("boardList", boardList);
+			nextPage = "/board/qna/qna_list.jsp";
+		}
+		
 		if(command.equals("boardList.qna")) {
 			ArrayList<BoardVO> boardList = service.boardAllList();
 			request.setAttribute("boardList", boardList);
 			nextPage = "/board/qna/qna_list.jsp";
 		}
+		
 		
 		if(command.equals("boardWrite.qna")) {
 			nextPage = "/board/qna/qna_write.jsp";
@@ -56,6 +63,12 @@ public class QnAController extends HttpServlet{
 			nextPage = "/board/qna/qna_detail.jsp";
 		}
 		
+		// 조회수 증가
+		if(command.equals("boardRead.qna")) {
+			int qnaNum=service.updateReadCount(request);
+			response.sendRedirect("boardDetail.qna?qnaNum="+qnaNum);
+			return;
+		}
 		// 게시글 작성자가 게시글 수정 페이지 요청
 		if(command.equals("boardUpdateForm.qna")) {
 			BoardVO board = service.getBoardByNum(request);
