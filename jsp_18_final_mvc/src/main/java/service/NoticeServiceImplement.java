@@ -137,7 +137,7 @@ public class NoticeServiceImplement implements NoticeService {
 		// 검색된 게시글 목록
 		ArrayList<NoticeVO> noticeList = dao.getSearchNoticeList(pm);
 		
-		System.out.println(noticeList);
+		
 		return noticeList;
 	}
 

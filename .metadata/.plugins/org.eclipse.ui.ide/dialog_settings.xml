@@ -41,6 +41,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\jsp_18_final_mvc"/>
 			<item value="C:\Users\admin\Desktop\Integrated_Implementation_Assessment"/>
 			<item value="C:\Users\admin\Desktop\group_project"/>
 			<item value="C:\Users\admin\Desktop\public\workspace\jsp_workspace\server_program_test"/>

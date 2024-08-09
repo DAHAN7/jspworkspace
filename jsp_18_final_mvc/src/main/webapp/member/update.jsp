@@ -3,8 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<jsp:include page="../common/header.jsp"/>
 	<!-- 
-	form tag에 action 속성의 값이 비어 있거나 속성이 존재하지 않으면 
-	현재 URL 요청 경로에 전송방식만 지정된 형식으로 요청
+		form tag에 action 속성의 값이 비어 있거나 속성이 존재하지 않으면 
+		현재 URL 요청 경로에 전송방식만 지정된 형식으로 요청
 	-->
 	<form method="post">
 		<table>
