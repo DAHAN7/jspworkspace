@@ -2,6 +2,7 @@ package filters;
 
 import java.io.IOException;
 
+import dao.MemberDAO;
 import dao.MemberDAOImpl;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -18,7 +19,7 @@ public class CheckCookieFilter extends HttpFilter implements Filter {
 	
 	private static final long serialVersionUID = -6746943554017516750L;
 	
-	MemberDAOImpl dao = new MemberDAOImpl();
+	MemberDAO dao;
 	
 	/**
 	 * url-pattern 에 지정된 형식에 맞는 요청 마다 호출되는 method
@@ -29,19 +30,27 @@ public class CheckCookieFilter extends HttpFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		
 		HttpServletRequest request = (HttpServletRequest)req;
+		
 		Cookie[] cookies = request.getCookies();
-		if(cookies !=null) {
-			for(Cookie c : cookies) {
-				if(c.getName().equals("id")) {
-					String id = c.getValue();
-					MemberVO mv = dao.getMemberById(id);
-					if(mv!=null) {
-						HttpSession session = request.getSession();
-						session.setAttribute("member", mv);
+		HttpSession session = request.getSession();
+		
+		if(cookies != null && session.getAttribute("member") == null) {
+			for(Cookie cookie : cookies) {
+				String name = cookie.getName();
+				if(name.equals("id")) {
+					// cookie에 등록된 사용자 id
+					String id = cookie.getValue();
+					
+					MemberDAO dao = new MemberDAOImpl();
+					
+					MemberVO member = dao.getMemberById(id);
+					
+					if(member != null) {
+						session.setAttribute("member", member);
 					}
 					break;
-				}
-			}
+				} // end check cookie
+			} // end for
 		}
 		
 		chain.doFilter(req, res);

@@ -21,7 +21,7 @@
 			<tr>
 				<th colspan="2">
 					<label> 
-						<input type="checkbox" name="check" /> 로그인 정보 저장
+						<input type="checkbox" name="check" value="rememberMe"/> 로그인 정보 저장
 					</label>
 				</th>
 			</tr>

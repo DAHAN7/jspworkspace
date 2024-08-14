@@ -1,5 +1,5 @@
 DESC test_mvc;
-use digital_js
+
 CREATE TABLE test_mvc(
 	num int primary key auto_increment,		-- 회원 번호
 	id VARCHAR(50) UNIQUE NOT NULL,			-- 회원 아이디
@@ -7,4 +7,7 @@ CREATE TABLE test_mvc(
 	name VARCHAR(50)						-- 회원 이름
 );
 
-select * from tst_mvc;
+DESC test_mvc;
+
+DESCRIBE test_mvc;
+
