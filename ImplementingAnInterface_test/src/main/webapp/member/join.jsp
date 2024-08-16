@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="../common/header.jsp" />
 <section>
-	<form action="#" method="post">
+	<form action="joinSubmit.mc" method="post">
 		<table>
 			<tr>
 				<th colspan=2>
