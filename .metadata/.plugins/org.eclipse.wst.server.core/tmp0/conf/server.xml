@@ -143,11 +143,9 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
       
-      <Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\ImplementingAnInterface\src\main\webapp" path="/ImplementingAnInterface" reloadable="true" source="org.eclipse.jst.jee.server:ImplementingAnInterface">
-	
-	<Resource driverClassName="com.mysql.cj.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="10" maxActive="100" maxWait="60000" minIdle="10" name="jdbc/MySQLDB" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/digital_jsp" username="digital"/>
-	
-<Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\ImplementingAnInterface\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
+      <Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\admin\Desktop\public\workspace\jsp_workspace\application_test_error\src\main\webapp" path="/application_test_error" reloadable="true" source="org.eclipse.jst.jee.server:application_test_error">
+	<Resource auth="container" driverClassName="com.mysql.cj.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" initialSize="10" maxActive="200" maxIdle="100" maxWait="60000" minIdle="10" name="jdbc/MySQLDB" password="1234" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/digital_jsp" username="digital"/>
+<Resources><PreResources base="C:\Users\admin\Desktop\public\workspace\jsp_workspace\application_test_error\build\classes" classLoaderOnly="false" className="org.apache.catalina.webresources.DirResourceSet" internalPath="/" webAppMount="/WEB-INF/classes"/></Resources></Context></Host>
     </Engine>
   </Service>
 </Server>

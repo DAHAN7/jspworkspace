@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="remember"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="notice_update_submit.nb"/>
+			<item value="notice_write_submit.nb"/>
+			<item value="제목"/>
+			<item value="form"/>
 			<item value="remember"/>
 			<item value="boarddetail"/>
 			<item value="/boarddetail."/>
@@ -19,10 +23,6 @@
 			<item value="moveDetail"/>
 			<item value="Used_Books"/>
 			<item value="localhost"/>
-			<item value="/group_project/"/>
-			<item value="${pageContext.request.contextPath}/LoginServlet"/>
-			<item value="selling-info"/>
-			<item value="book-info"/>
 		</list>
 		<list key="replacehistory">
 			<item value="books"/>
