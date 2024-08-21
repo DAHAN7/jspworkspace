@@ -21,6 +21,9 @@ public class NoticeService extends ServiceProviderAdapter<NoticeBoard>{
 	@Override
 	public ArrayList<NoticeBoard> getList(HttpServletRequest request) {
 		int page = 1;
+		// TODO board_list.jsp parameter page change pageNum
+		// 	OR
+		//String pageNum = request.getParameter("pageNum");
 		String pageNum = request.getParameter("page");
 		if(pageNum != null) {
 			page = Integer.parseInt(pageNum);
